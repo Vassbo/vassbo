@@ -15902,7 +15902,10 @@ h2.title {
 }
 
 .progress .progress-bar.progress-bar-primary {
-  background: #9c27b0 !important;
+  /* background: #9c27b0 !important; */
+  background:
+      linear-gradient(to right, red 25%, orange 50%, #16b649 75%) left/var(--p,100%) fixed,
+      lightgray;
 }
 
 .progress .progress-bar.progress-bar-info {
@@ -18068,3 +18071,28 @@ footer .pull-center {
 }
 
 /*# sourceMappingURL=kit-free.css.map */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Opera and Firefox */
+}
