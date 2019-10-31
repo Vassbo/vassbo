@@ -1,0 +1,12 @@
+[[redirects]]
+  from = "/*"
+  to = "/error/file-not-found.html"
+  status = 404
+
+[[redirects]]
+  from = "/profil.html"
+  to = "/profil/"
+  status = 301
+  force = false
+  query = {path = ":path"}
+  # conditions = {Language = ["en"], Country = ["US"], Role = ["admin"]}
