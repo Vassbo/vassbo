@@ -1,0 +1,22 @@
+<Files .htaccess>
+order allow,deny
+deny from all
+</Files>
+
+Options +FollowSymlinks
+RewriteEngine on
+RewriteCond % ^www.kristoffer.netlify.com [NC]
+RewriteRule ^(.*)$ https://kristoffer.netlify.com/$1 [R=301,NC]
+
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^(.*)$ $1.html
+
+ErrorDocument 400 /error/bad-request.html
+ErrorDocument 401 /error/unauthorised.html
+ErrorDocument 403 /error/forbidden.html
+ErrorDocument 404 /error/file-not-found.html
+ErrorDocument 500 /error/internal-server-error.html
+
+ErrorDocument 503 /error/service-unavailable.html
