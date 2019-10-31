@@ -4,9 +4,23 @@
   status = 404
 
 [[redirects]]
-  from = "/profil.html"
+  from = "/profile.html"
   to = "/profil/"
   status = 301
   force = false
   query = {path = ":path"}
   # conditions = {Language = ["en"], Country = ["US"], Role = ["admin"]}
+
+[[redirects]]
+  from = "/login.html"
+  to = "/logg_inn/"
+  status = 301
+  force = false
+  query = {path = ":path"}
+
+[[redirects]]
+  from = "*/index.html"
+  to = "../"
+  status = 301
+  force = false
+  query = {path = ":path"}
