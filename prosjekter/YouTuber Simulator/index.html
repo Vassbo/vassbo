@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>YouTuber Simulator</title>
+
+  <link href="style.css" type="text/css" rel="stylesheet">
+  <link href="animations.css" type="text/css" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css?family=Lexend+Exa&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+</head>
+<body>
+  <div id="red_overlay"></div>
+  <div id="title">YouTuber Simulator</div>
+  <div id="menu">
+    <button id="continue" class="menuButton" onclick="continueGame()" disabled>Continue</button>
+    <button id="newGame" class="menuButton" onclick="menu(this.id, true, true)">New Game</button>
+    <button id="settings" class="menuButton" onclick="menu(this.id, false, true)">Settings</button>
+    <button id="about" class="menuButton" onclick="menu(this.id, false, true)">About</button>
+    <button id="exit" class="menuButton" onclick="exit()">Exit</button>
+  </div>
+
+  <div id="newGameDiv" class="card hidden">
+    <p class="title">Welcome to YouTuber Simulator.</p>
+    <br>
+    <p class="text">Please start by entering your virtual details.</p>
+    <p class="text"><em>(You can be yourself or just make up some stuff.)</em></p>
+    <br>
+    <p class="inputText">Name:</p>
+    <input class="starterInput" id="name" type="text" maxlength="40" placeholder="Enter a name...">
+    <br><br>
+    <p class="inputText">Age:</p>
+    <input class="starterInput" id="age" type="number" min="0" max="100" placeholder="Enter an age...">
+
+    <br><br>
+    <button class="cardButton light" onclick="generateStarter()">Generate</button>
+    <div class="cardButtonDiv"><button class="cardButton" id="confirmStarter" onclick="confirmStarter();">Confirm</button></div>
+  </div>
+
+  <div id="createChannelDiv" class="card hidden">
+    <p class="title">Hello <span class="name">${name}</span>!</p>
+    <br>
+    <p class="text">Please enter the name of your YouTube channel.</p>
+    <p class="text"><em>(You can change this later.)</em></p>
+    <br>
+    <p class="inputText">Channel Name:</p>
+    <input class="starterInput" id="channelName" type="text" maxlength="50" placeholder="Enter a channel name...">
+    <br><br>
+    <button class="cardButton light" onclick="generateChannel()">Generate</button>
+    <div class="cardButtonDiv"><button class="cardButton" id="confirmChannel" onclick="confirmChannel();">Confirm</button></div>
+  </div>
+
+  <div id="settingsDiv" class="card hidden">
+    <!-- sound, volume, fullscreen, ... -->
+    <p class="text">Enable / disable sound</p>
+    <!-- <p class="text">Volume??</p> -->
+    <p class="text">Fullscreen mode..</p>
+  </div>
+
+  <div id="aboutDiv" class="card hidden">
+    <p class="title">About:</p>
+    <br>
+    <p class="text">This was made by Kristoffer Vassbø.</p>
+    <p class="text">Just have fun. This game don't have an absolute end!</p>
+    <p class="text">It uses local storage / (web storage) to save the game. So all progress is stored locally on this computer!</p>
+    <p class="text">And the best of all.. it is completely free! &#128522;</p>
+    <!-- https://www.w3schools.com/charsets/ref_emoji_smileys.asp -->
+    <!-- TODO: social links -->
+  </div>
+
+  <button id="back" class="menuButton hidden" onclick="back()">Back</button>
+
+  <div id="mainScreenDiv" class="card hidden">
+    <!-- <b>Personal:</b>
+    <p>Name: <span class="name">${name}</span></p>
+    <p>Age: <span class="age">${age}</span></p>
+    <p>Money: <span class="money">${money}</span>$</p>
+    <br><hr><br>
+    <b>Channel:</b>
+    <p>Channel Name: <span class="channelName">${channelName}</span></p>
+    <p>Subscribers: <span class="subscribers">${subscribers}</span></p> -->
+
+    <div id="actionButtons">
+      <button class="actionButton longActionButton" id="person" onclick="actionButtonClick(this.id)">
+        <i class="material-icons">person</i>
+        <!-- <p>Go Shopping</p> -->
+      </button>
+      <button class="actionButton" id="stats" onclick="actionButtonClick(this.id)">
+        <!-- <i class="material-icons">subscriptions</i> -->
+        <!-- <i class="material-icons">insert_chart</i> -->
+        <i class="material-icons">trending_up</i>
+        <p>Channel Stats</p>
+      </button>
+      <button class="actionButton" id="createVideo" onclick="actionButtonClick(this.id)">
+        <i class="material-icons">video_call</i>
+        <p>Record Video</p>
+      </button>
+      <button class="actionButton" id="shopping" onclick="actionButtonClick(this.id)">
+        <i class="material-icons">shopping_cart</i>
+        <p>Go Shopping</p>
+      </button>
+      <button onclick="goToMainMenu()" class="actionButton longActionButton">
+        <i class="material-icons">home</i>
+        <!-- <p>Go Shopping</p> -->
+      </button>
+    </div>
+
+    <div id="personDiv" class="hidden">
+      <b>Personal:</b>
+      <p>Name: <span class="name">${name}</span></p>
+      <p>Age: <span class="age">${age}</span></p>
+      <p>Money: <span class="money">${money}</span>$</p>
+    </div>
+
+    <div id="statsDiv" class="hidden">
+      <b>Channel:</b>
+      <p>Channel Name: <span class="channelName">${channelName}</span></p>
+      <p>Subscribers: <span class="subscribers">${subscribers}</span></p>
+      <!-- Videos:
+      Views:
+      Comments:
+      ... -->
+    </div>
+
+    <div id="createVideoDiv" class="hidden">
+      <p>Choose what to make...:</p>
+      <!-- TODO: When creating video:
+      topic
+      livestream?
+      custom title
+      custom description
+      custom tags
+      choose thumbnail
+      promotions (marketing)
+      sponsored?
+      ...
+      -->
+    </div>
+
+    <div id="shoppingDiv" class="hidden">
+      <b>Shopping webpage:</b>
+    </div>
+
+    <button id="mainBack" class="actionButton hidden" onclick="mainBack()"><i class="material-icons">arrow_back</i></button>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="ripple.js"></script>
+</body>
+</html>

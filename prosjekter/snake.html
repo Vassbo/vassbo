@@ -1,0 +1,77 @@
+<canvas id="gc" width="575" height="575"></canvas>
+<!--original=400,400-->
+<!--iPad size=965,600-->
+<script>
+window.onload=function() {
+	canv=document.getElementById("gc");
+	ctx=canv.getContext("2d");
+	document.addEventListener("keydown",keyPush);
+	setInterval(game,1000/15);
+}
+px=py=11; <!--10-->
+gs=tc=24; <!--20-->
+ax=ay=11; <!--15-->
+xv=yv=0;
+trail=[];
+tail = 5;
+function game() {
+	px+=xv;
+	py+=yv;
+	if(px<0) {
+		px= tc-1;
+	}
+	if(px>tc-1) {
+		px= 0;
+	}
+	if(py<0) {
+		py= tc-1;
+	}
+	if(py>tc-1) {
+		py= 0;
+	}
+	ctx.fillStyle="white";<!--black/lightgray-->
+	ctx.fillRect(0,0,canv.width,canv.height);
+	
+	ctx.lineWidth="6";
+	ctx.strokeStyle="black";
+	ctx.rect(-2,-2,577,577);
+	ctx.stroke();
+
+	ctx.fillStyle="green"; <!--lime-->
+	for(var i=0;i<trail.length;i++) {
+		ctx.fillRect(trail[i].x*gs,trail[i].y*gs,gs-2,gs-2);
+		if(trail[i].x==px && trail[i].y==py) {
+			tail = 5;
+		}
+	}
+	trail.push({x:px,y:py});
+	while(trail.length>tail) {
+	trail.shift();
+	}
+
+	if(ax==px && ay==py) {
+		tail++;
+		ax=Math.floor(Math.random()*tc);
+		ay=Math.floor(Math.random()*tc);
+	}
+	ctx.fillStyle="red";<!--red-->
+	ctx.fillRect(ax*gs,ay*gs,gs-2,gs-2);
+}
+function keyPush(evt) {
+	switch(evt.keyCode) {
+		case 65:
+			xv=-1;yv=0;
+			break;
+		case 87:
+			xv=0;yv=-1;
+			break;
+		case 68:
+			xv=1;yv=0;
+			break;
+		case 83:
+			xv=0;yv=1;
+			break;
+	}
+	<!--37-40-->
+}
+</script>

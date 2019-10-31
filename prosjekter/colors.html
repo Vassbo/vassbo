@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Colors</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0px;
+    }
+
+    hr {
+      background-color: rgba(255,255,255,0.18);
+      height: 3px;
+      border: none;
+    }
+
+    #untamed {
+        margin: 0;
+        padding: 0px;
+        background-color: #000;
+        font-size: 30px;
+        font-weight: bold;
+        color: #eee;
+        width: 100%;
+        position: absolute;
+        top: 0px;
+        float: center;
+    }
+    #untamed h1 {
+        text-align: center;
+        font-family: courier;
+        font-variant: small-caps;
+        color: #eee;
+        margin: 16px;
+    }
+    #untamed h3 {
+        font-family: courier;
+        color: #eee;
+    }
+    span {
+        float: center;
+        font-family: Comic Sans MS;
+    }
+    p {
+      display: none;
+    }
+
+    /* Amethyst Animion's CUSTOM COLORS */
+    #royal { color: #ee1280;} #legacy { color: #923c9f;}
+    #stream { color: #198ae4;} #kingz { color: #091CD3;}
+
+    /* full */
+    #red { color: #ff0000;}
+    #yellow { color: #ffff00;}
+    #green { color: #00ff00;}
+    #cyan { color: #00ffff;}
+    #blue { color: #0000ff;}
+    #fuchsia { color: #ff00ff;}
+
+    /* half */
+    #maroon { color: #800000;}
+    #dyel { color: #808000;}
+    #dgre { color: #008000;}
+    #teal { color: #008080;}
+    #navy { color: #000080;}
+    #purple { color: #800080;}
+
+    /* custom */
+    #ruby { color: #e0115f;}
+    #ferrari { color: #ff2800;}
+    #lava { color: #cf1020;}
+    #bronze { color: #cd7f32;}
+    #golden { color: #ffd700;}
+    #gold { color: #a57c00;}
+    #amber { color: #ffbf00;}
+    #minion { color: #f5e050;}
+    #lemon { color: #fff700;}
+    #emerald { color: #50c878;}
+    #sapphire { color: #0f52ba;}
+    #lazuli { color: #26619c;}
+    #azure { color: #007fff;}
+
+    /* special */
+    #platinum { color: #e5e4e2;}
+    #silver { color: #c0c0c0;}
+    #diamond { color: #b9f2ff;}
+  </style>
+</head>
+<body>
+  <div id="untamed">
+    <center>
+      <h1>Colors</h1>
+
+      <!--<h3>Custom Colors</h3>-->
+      <hr/><br>
+      <span id="royal" onclick="copy('#royalhex');">royal-pink</span>
+      <p id="royalhex">#ee1280</p>
+      <br>
+      <span id="legacy" onclick="copy('#legacyhex');">legacy-purple</span>
+      <p id="legacyhex">#923c9f</p>
+      <br>
+      <span id="stream" onclick="copy('#streamhex');">blue-stream</span>
+      <p id="streamhex">#198ae4</p>
+      <br>
+      <span id="kingz" onclick="copy('#kingzhex');">infinite-seas</span>
+      <p id="kingzhex">#091CD3</p>
+      <br><br><hr><br>
+
+      <h3>Red</h3>
+      <br>
+      <span id="ruby">ruby</span>
+      <br>
+      <span id="red">red</span>
+      <br>
+      <span id="lava">lava</span>
+      <br>
+      <span id="maroon">maroon</span>
+      <br>
+      <span id="ferrari">ferrari-red</span>
+      <br>
+      <span id="bronze">bronze</span>
+      <br><br><hr/><br>
+      <h3>Yellow</h3>
+      <br>
+      <span id="golden">golden</span>
+      <br>
+      <span id="amber">amber</span>
+      <br>
+      <span id="minion">minion-yellow</span>
+      <br>
+      <span id="gold">gold</span>
+      <br>
+      <span id="yellow">yellow</span>
+      <br>
+      <span id="dyel">dark yellow</span>
+      <br><br><hr/><br>
+      <h3>Green</h3>
+      <br>
+      <span id="emerald">emerald</span>
+      <br>
+      <span id="dgre">dark green</span>
+      <br>
+      <span id="lemon">lemon</span>
+      <br>
+      <span id="green">green</span>
+      <br><br><hr/><br>
+      <h3>Cyan</h3>
+      <br>
+      <span id="cyan">cyan</span>
+      <br>
+      <span id="teal">teal</span>
+      <br><br><hr/><br>
+      <h3>Blue</h3>
+      <br>
+      <span id="sapphire">sapphire</span>
+      <br>
+      <span id="blue">blue</span>
+      <br>
+      <span id="lazuli">lapis-lazuli</span>
+      <br>
+      <span id="navy">navy</span>
+      <br>
+      <span id="azure">azure</span>
+      <br><br><hr/><br>
+      <h3>Magenta</h3>
+      <br>
+      <span id="fuchsia">fuchsia</span>
+      <br>
+      <span id="purple">purple</span>
+      <br><br><hr/><br>
+      <h3>White</h3>
+      <br>
+      <span id="platinum">platinum</span>
+      <br>
+      <span id="silver">silver</span>
+      <br>
+      <span id="diamond">diamond</span>
+      <br><br><hr/>
+      <br>
+    </center>
+  </div>
+
+  <script>
+    function copy(element) {
+       var $temp = $("<input>");
+       $("body").append($temp);
+       $temp.val($(element).text()).select();
+       document.execCommand("copy");
+       $temp.remove();
+     }
+  </script>
+</body>
+</html>

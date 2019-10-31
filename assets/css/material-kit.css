@@ -19,6 +19,9 @@
 :root {
   --primary-color: #d15858; /* #9c27b0 */
 }
+html {
+  scroll-behavior: smooth;
+}
 
 .carousel.carousel-full-nagivation .left {
   cursor: url("../../img/arrow-left.png"), url("../../img/arrow-left.cur"), default !important;

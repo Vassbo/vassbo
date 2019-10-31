@@ -1,0 +1,64 @@
+/* Created by SaddleSneeze */
+
+div {
+    margin-top:20px;
+    text-align: center;
+}
+
+#ebody {
+    width: 90%;
+    min-height: 200px;
+    /*100px?*/
+    color:lightblue;
+    /*font-weight:bold;*/
+    font-style:italic ;
+}
+
+/*#subj, */#addr {
+    width: 90%;
+    color:pink;
+    font-weight:bold;
+    text-decoration:underline;
+}
+
+#subj {
+    width:90%;
+    color:pink;
+    font-weight:bold;
+}
+
+textarea{
+    /*outline-color:blue;*/
+    outline-style:none;
+    border-width:0px;
+    resize: none;
+    /*0.1*/
+    /*background-color:pink;*/
+}
+
+hr {
+    /*color:#757575;*/
+    width:90%;
+}
+
+#sendEmail{
+    text-decoration:none;
+    color:#757575;
+    background-color:#fff;
+    padding:10px 41.2%;
+    /*0.5em 1.5em*/
+    border:0.001px solid #A9A9A9;
+    outline:0.001px solid #A9A9A9;
+    transition: all .3s linear;
+}
+/*
+#sendEmail:hover{
+    outline-color:#fff;
+    border:2px solid #A9A9A9;
+    outline-offset:10px;
+    padding:0.4em 1.4em;
+}*/
+
+#sendEmail:hover{
+    background-color:lightgray;
+}

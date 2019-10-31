@@ -1,0 +1,1839 @@
+<!-- Made 08.12.2018 -->
+
+<!-- Thanks to Zedd for the colors -->
+<!-- Thanks to ? for the fonts -->
+<!-- Thanks to Jaydeep Khatri for the checkboxes -->
+<!-- Thanks to Isuru Sampath for the transforms -->
+<!-- Thanks to Кирилл Резанов for the shadow button -->
+<!-- Thanks to Thomas Hj for the first loader -->
+<!-- Thanks to MCJEH for the second loader -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Styles</title>
+  <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <style>
+body {
+  text-align:center;
+  background:linear-gradient(#de7070,#e09a4c,#e1db6d,#9edc6f,#92f2f6,#c67dea,#e87fda);
+  /*background-attachment: fixed;*/
+}
+
+/* colors */
+
+#colorBar {
+  background-color: #111;
+  color: white;
+  font-family: monospace;
+  text-align: center;
+  height: 100px;
+  border-radius: 10px;
+}
+
+#color {
+  margin-top: 10px;
+  margin-left: 10px;
+  width: 84%;
+  background-color: inherit;
+  border: none;
+  color: white;
+  outline: none;
+  font-size: 1em;
+  font-family: monospace;
+}
+#refresh {
+  float: right;
+  font-size: 3em;
+  width: 10%;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+
+@keyframes rotate {
+  0% { transform: rotate(360deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.animated {
+  animation: rotate .2s ease-out 0s;
+}
+
+#line {
+  border-radius:2px;
+  background-color: white;
+  width: 80%;
+  height: 30px;
+  margin: 20px auto 5px auto;
+  transition: background-color .5s ease-out 0s;
+}
+
+/* shadow button */
+
+#button {
+    background-color: rgba(255,255,255,0.2);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 30px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 1px solid #d5d5d5;
+    transition: 0.2s;
+}
+
+#one, #two {
+    height: 2px;
+    width:20px;
+    background-color: #333;
+    transition: 0.2s;
+}
+
+#one {
+    transform: rotate(45deg);
+    margin-right: -3px;
+}
+
+#two {
+    transform: rotate(-45deg);
+    margin-left: -3px;
+}
+
+.active #one {
+    transform: rotate(-45deg);
+}
+
+.active #two {
+    transform: rotate(45deg);
+}
+
+.active {
+    box-shadow: 0 0 10px rgba(0,0,0,.3);
+}
+
+/* loading animations */
+
+.loader {
+         -o-animation: loader 1.5s linear infinite;
+       -moz-animation: loader 1.5s linear infinite;
+        -ms-animation: loader 1.5s linear infinite;
+    -webkit-animation: loader 1.5s linear infinite;
+            animation: loader 1.5s linear infinite;
+    border-radius: 50%;
+    box-shadow: 0 1.2vh 2vh -1.2vh #6bd9ff,
+                0 -1.1vh 1.5vh -.9vh #74b9e2 inset;
+    height: 15vh;
+    width: 15vh;
+    margin-left: 40%
+}
+
+/* Animation {Default} */
+@keyframes loader {
+    to {
+             -o-transform: rotate(360deg);
+           -moz-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+    }
+}
+
+/* Copy of Animation {Prefix} */
+@-webkit-keyframes loader {
+    to {
+             -o-transform: rotate(360deg);
+           -moz-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+    }
+}
+
+/* second loader */
+
+.outer {
+ display: table;
+ height: 100%;
+ width: 100%;
+}
+.middle {
+ display: table-cell;
+ height: 100%;
+ vertical-align: middle;
+ width: 100%;
+}
+.loading-circle {
+ height: 160px;
+ margin: 0px auto;
+ position: relative;
+ width: 160px;
+}
+.percent {
+ color: #fff;
+ display: block;
+ font-size: 36px;
+ margin: -16px 0px;
+ position: absolute;
+ text-align: center;
+ top: 50%;
+ width: 100%;
+}
+.circle1 {
+ background-color: #333;
+ border: 5px solid;
+ border-color: #fff transparent;
+ border-radius: 50%;
+ -webkit-box-shadow: 0px 0px 16px #000;
+ -moz-box-shadow: 0px 0px 16px #000;
+ box-shadow: 0px 0px 16px #000;
+ height: 100%;
+ left: 0px;
+ position: absolute;
+ top: 0px;
+ width: 100%;
+}
+.circle2 {
+ background-color: #333;
+ border: 5px solid;
+ border-color: #fff transparent;
+ border-radius: 50%;
+ -webkit-box-shadow: 0px 0px 16px #000;
+ -moz-box-shadow: 0px 0px 16px #000;
+ box-shadow: 0px 0px 16px #000;
+ height: 80%;
+ left: 10%;
+ position: absolute;
+ top: 10%;
+ width: 80%;
+}
+.rotate-right {
+ -webkit-animation: rotate 2s linear 0s infinite reverse;
+ -moz-animation: rotate 2s linear 0s infinite reverse;
+ animation: rotate 2s linear 0s infinite reverse;
+}
+.rotate-left {
+ -webkit-animation: rotate 2s linear 0s infinite normal;
+ -moz-animation: rotate 2s linear 0s infinite normal;
+ animation: rotate 2s linear 0s infinite normal;
+}
+
+@-webkit-keyframes rotate {
+ from {
+  -webkit-transform: rotate(0deg);
+ }
+ to {
+  -webkit-transform: rotate(360deg);
+ }
+}
+@-moz-keyframes rotate {
+ from {
+  -moz-transform: rotate(0deg);
+ }
+ to {
+  -moz-transform: rotate(360deg);
+ }
+}
+@keyframes rotate {
+ from {
+  transform: rotate(0deg);
+ }
+ to {
+  transform: rotate(360deg);
+ }
+}
+
+/* transforms */
+
+h2 {
+  color: #fff;
+  text-shadow: 0px 0px 12px #fff;
+  font-family: Gloria Hallelujah;
+  font-size: 28px;
+}
+
+h3 {
+  color: red;
+  /*text-shadow: 0px 0px 0.1px red;*/
+  font-family: Courgette;
+  font-size: 18px;
+  text-decoration: underline;
+}
+
+h4 {
+  color: blue;
+  font-family: Courgette;
+  font-size: 14px;
+  font-style: italic;
+}
+
+h5 {
+  margin: -10px 0 0 0;
+  color: red;
+  font-family: Courgette;
+  font-size: 14px;
+  font-style: italic;
+}
+
+.duration {
+  box-shadow: 3px 4px 8px #68182b;
+  margin-left: 10%;
+  width: 80%;
+  height: 150px;
+  color: #fff;
+  border: 1.4px dashed #d1214b;
+  border-radius: 5px;
+  background: #9c2542;
+  transition:height 1.8s;/*we can use width for this item*/
+  font-family: Shadows into light;
+  font-size: 25px;
+}
+
+.duration:hover {
+  height:45px;
+}
+
+ul {
+  color: #4c5cbf;
+  text-align: left;
+  border: 4px dotted #d1214b;
+  padding: 26px;
+  font-weight: bold;
+}
+
+ul span {
+  color: #4256d1;
+  font-weight: normal;
+}
+
+.timing {
+  width: 200px;
+  height: 80px;
+  color: blue;
+  background-color: cyan;
+  border: 4px dotted red;
+  transition-timing-function: cubic bezier(0,0,1,1);
+}/*This Part Not Undertanded For Me*/
+
+.p-rotate {
+  box-shadow: 3px 4px 8px #68182b;
+  margin-left: 10%;
+  width: 80%;
+  height: 150px;
+  color: #fff;
+  border: 1.4px dashed #d1214b;
+  border-radius: 5px;
+  background: #9c2542;
+  font-family: Shadows into light;
+  font-size: 25px;
+  margin: 30px 0 44px 56px;
+  transform: rotate(10deg);
+}
+
+.n-rotate {
+  box-shadow: 3px 4px 8px #68182b;
+  margin-left: 10%;
+  width: 80%;
+  height: 150px;
+  color: #fff;
+  border: 1.4px dashed #d1214b;
+  border-radius: 5px;
+  background: #9c2542;
+  font-family: Shadows into light;
+  font-size: 25px;
+  margin: 40px 0 20px 56px;
+  transform:rotate(-10deg);
+}
+
+.origin {
+  box-shadow: 3px 4px 8px #68182b;
+  margin-left: 10%;
+  width: 80%;
+  height: 150px;
+  color: #fff;
+  border: 2px solid #d1214b;
+  border-radius: 5px;
+  background: #9c2542;
+  font-family: Shadows into light;
+  font-size: 25px;
+  padding: 8px;
+  margin: 50px 0 40px 15px;
+  position: relative;
+  transform: rotate(10deg);
+  transform-origin: 60% 90%;
+}
+
+.empty {
+  margin-top: 20px;
+  margin-left: 6%;
+  width: 80%;
+  height: 150px;
+  padding: 10px;
+  position: absolute;
+  border: 2px solid #d1214b;
+  border-radius: 5px;
+}
+
+.translate{
+  width: 28%;
+  padding: 26px;
+  position: absolute;
+  background-color: #9c2542;
+  border: 1.5px solid #d1214b;
+  border-radius: 5px;
+  color: #fff;
+  font-family: Shadows into light;
+  font-size: 18px;
+  transform: translate( 150px, 15px);
+}
+
+.skew {
+  box-shadow: 3px 4px 8px #68182b;
+  margin-left: 16%;
+  width: 60%;
+  height: 100px;
+  border: 4px solid #d1214b;
+  border-radius: 5px;
+  background: #9c2542;
+  padding: 10px;
+  transform: skew(30deg);
+}
+
+.radius {
+  box-shadow: 3px 4px 8px #68182b;
+  margin-left: 16%;
+  width: 60%;
+  height: 100px;
+  border: 4px solid #d1214b;
+  background: #9c2542;
+  color: #fff;
+  font-family: Shadows into light;
+  font-size: 25px;
+  padding: 10px;
+  border-radius: 10px 50px;
+}
+
+.scale1 {
+  box-shadow: 3px 4px 8px #68182b;
+  margin-left: 23%;
+  width: 300px;
+  height: 80px;
+  color: #fff;
+  border: 4px dashed #d1214b;
+  border-radius: 5px;
+  background: #9c2542;
+  font-family: Shadows into light;
+  word-wrap: break-word;
+  transform: scale(0.6 , 0.6);
+}
+
+.scale2 {
+  box-shadow: 3px 4px 8px #68182b;
+  margin-left: 23%;
+  width: 300px;
+  height: 80px;
+  color: #fff;
+  border: 4px dashed #d1214b;
+  border-radius: 5px;
+  background: #9c2542;
+  font-family: Shadows into light;
+  word-wrap: break-word;
+  transform: scale(1.6 , 1.6);
+  margin-bottom: 50px;
+}
+
+.multiple-t {
+  box-shadow: 3px 4px 8px #68182b;
+  margin-left: 23%;
+  width: 250px;
+  height: 100px;
+  color: #fff;
+  border: 4px dotted #d1214b;
+  border-radius: 5px;
+  background: #9c2542;
+  font-family: Shadows into light;
+  margin: 30px 0 30px 120px;
+  transform: rotate(15deg) translate(30px) skew(310deg);
+  /* Please edit scew value to more fun styles */
+}
+
+.keyframes {
+  box-shadow: 3px 4px 8px #68182b;
+  margin-left: 12%;
+  width: 80%;
+  height: 150px;
+  border: 4px dashed #d1214b;
+  border-radius: 5px;
+  background: #9c2542;
+  font-family: Shadows into light;
+  animation-name: colorchange;
+  animation-delay: 3000ms;
+  animation-iteration-count: infinite;
+  animation-duration: 10s;
+  animation-timing-function: ease-out;
+}
+
+@keyframes colorchange {
+  00% {background-color: #9c2542 ;}
+  05% {background-color: #9c2568 ;}
+  10% {background-color: #9c2596 ;}
+  15% {background-color: #82259c ;}
+  20% {background-color: #68259c ;}
+  25% {background-color: #36259c ;}
+  30% {background-color: #254a9c ;}
+  35% {background-color: #25729c ;}
+  40% {background-color: #25969c ;}
+  45% {background-color: #259c7c ;}
+  50% {background-color: #259c58 ;border-color: blue;}
+  55% {background-color: #259c38 ;}
+  60% {background-color: #4a9c25 ;}
+  65% {background-color: #709c25 ;}
+  70% {background-color: #8e9c25 ;}
+  75% {background-color: #9c9025 ;}
+  80% {background-color: #9c6c25 ;}
+  85% {background-color: #9c5025 ;}
+  90% {background-color: #9c2525 ;}
+  95% {background-color: #9c2550 ;}
+  100% {background-color: #9c2542;border-color: #d1214b;}
+}
+
+/*
+@keyframes example{
+  from {background-color: blue ;}
+  to {background-color:#00F318;}
+} This is same result for 40% & 70%
+*/ /* Start = 0%? */
+
+.rect1 {
+  position: absolute;
+  transform: rotate(10deg) skew(-30deg);
+  animation-name: colorchange;
+  animation-duration: 4s;
+  animation-timing-function: linear;
+  animation-delay: 3000ms;
+  animation-iteration-count: infinite;
+  animation-direction: reverse;
+  box-shadow: 3px 4px 8px #68182b;
+  width: 200px;
+  height: 100px;
+  border: 4px dotted #d1214b;
+  border-radius: 5px;
+  background: #9c2542;
+  font-family: Shadows into light;
+  margin: 30px 0 30px 32%;
+}
+
+.rect2 {
+  position: relative;
+  transform: rotate(-5deg) skew(30deg);
+  animation: colorchange 1s linear 1s 10/*iteration-count*/ alternate;
+  box-shadow: 3px 4px 8px #68182b;
+  width: 150px;
+  height: 60px;
+  border: 4px dotted #d1214b;
+  border-radius: 5px;
+  background: #9c2542;
+  font-family: Shadows into light;
+  margin: 50px 0 50px 37%;
+}
+
+.X {
+  box-shadow: 3px 4px 8px #68182b;
+  margin-left: 22%;
+  width: 300px;
+  height: 100px;
+  color: #fff;
+  border: 3px dashed #d1214b;
+  border-radius: 5px;
+  background: #9c2542;
+  font-family: Shadows into light;
+  font-size: 25px;
+  transform: rotateX(130deg);
+}
+
+.Y {
+  box-shadow: 3px 4px 8px #68182b;
+  margin-left: 22%;
+  width: 300px;
+  height: 100px;
+  color: #fff;
+  border: 3px dashed #d1214b;
+  border-radius: 5px;
+  background: #9c2542;
+  font-family: Shadows into light;
+  font-size: 25px;
+  transform: rotateY(130deg);
+}
+
+.Z {
+  box-shadow: 3px 4px 8px #68182b;
+  width: 300px;
+  height: 100px;
+  color: #fff;
+  border: 3px dashed #d1214b;
+  border-radius: 5px;
+  background: #9c2542;
+  font-family: Shadows into light;
+  font-size: 25px;
+  margin: 90px 0 30px 22%;
+  transform:rotateZ(130deg);
+}
+
+.trans {
+  width: 300px;
+  height: 100px;
+  margin-left: 19%;
+  box-shadow: 3px 4px 8px #68182b;
+  color: #fff;
+  border: 3px dashed #d1214b;
+  border-radius: 5px;
+  background: #9c2542;
+  font-family: Shadows into light;
+  font-size: 20px;
+  transform: translateX(30px)
+  translateY(2em)
+  translateZ(-13px);
+}
+
+.trans2 {
+  width: 300px;
+  height: 100px;
+  margin-left: 19%;
+  box-shadow: 3px 4px 8px #68182b;
+  color: #fff;
+  border: 3px dashed #d1214b;
+  border-radius: 5px;
+  background: #9c2542;
+  font-family: Shadows into light;
+  font-size: 20px;
+  transform: translate3d(30px ,2em, -15px );
+}
+
+.angel {
+  width: 200px;
+  height: 250px;
+  color: #fff;
+  border: 3px solid #d1214b;
+  border-radius: 5px;
+  background: #9c2542;
+  font-family: Shadows into light;
+  font-size: 20px;
+  margin :25px 0 22px 31%;
+  position: absolute;
+  transform: rotateX(45deg);
+}
+
+.none {
+  width: 210px;
+  height: 260px;
+  border: 3px solid #d1214b;
+  border-radius: 5px;
+  margin: 20px 0 20px 31%;
+  perspective: 100px;
+}
+
+/* checkboxes */
+
+input[type=checkbox] {
+    visibility: hidden;
+}
+
+/* SLIDE ONE */
+.slideOne {
+    width: 50px;
+    height: 10px;
+    background: #333;
+    margin: 20px auto;
+
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    position: relative;
+
+    -webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
+    -moz-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
+    box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
+}
+
+.slideOne label {
+    display: block;
+    width: 16px;
+    height: 16px;
+
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+
+    -webkit-transition: all .4s ease;
+    -moz-transition: all .4s ease;
+    -o-transition: all .4s ease;
+    -ms-transition: all .4s ease;
+    transition: all .4s ease;
+    cursor: pointer;
+    position: absolute;
+    top: -3px;
+    left: -3px;
+
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
+    -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
+    background: #fcfff4;
+
+    background: -webkit-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    background: -moz-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    background: -o-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    background: -ms-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfff4', endColorstr='#b3bead',GradientType=0 );
+}
+
+.slideOne input[type=checkbox]:checked + label {
+    left: 37px;
+}
+
+/* SLIDE TWO */
+.slideTwo {
+    width: 80px;
+    height: 30px;
+    background: #333;
+    margin: 20px auto;
+
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    position: relative;
+
+    -webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
+    -moz-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
+    box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
+}
+
+.slideTwo:after {
+    content: '';
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    height: 2px;
+    width: 52px;
+
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    background: #111;
+
+    -webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
+    -moz-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
+    box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
+}
+
+.slideTwo label {
+    display: block;
+    width: 22px;
+    height: 22px;
+
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+
+    -webkit-transition: all .4s ease;
+    -moz-transition: all .4s ease;
+    -o-transition: all .4s ease;
+    -ms-transition: all .4s ease;
+    transition: all .4s ease;
+    cursor: pointer;
+    position: absolute;
+    top: 4px;
+    z-index: 1;
+    left: 4px;
+
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
+    -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
+    background: #fcfff4;
+
+    background: -webkit-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    background: -moz-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    background: -o-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    background: -ms-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfff4', endColorstr='#b3bead',GradientType=0 );
+}
+
+.slideTwo label:after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    background: #333;
+    left: 6px;
+    top: 6px;
+
+    -webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,1), 0px 1px 0px rgba(255,255,255,0.9);
+    -moz-box-shadow: inset 0px 1px 1px rgba(0,0,0,1), 0px 1px 0px rgba(255,255,255,0.9);
+    box-shadow: inset 0px 1px 1px rgba(0,0,0,1), 0px 1px 0px rgba(255,255,255,0.9);
+}
+
+.slideTwo input[type=checkbox]:checked + label {
+    left: 54px;
+}
+
+.slideTwo input[type=checkbox]:checked + label:after {
+    background: #00bf00;
+}
+
+/* SLIDE THREE */
+.slideThree {
+    width: 80px;
+    height: 26px;
+    background: #333;
+    margin: 20px auto;
+
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    position: relative;
+
+    -webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
+    -moz-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
+    box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
+}
+
+.slideThree:after {
+    content: 'OFF';
+    font: 12px/26px Arial, sans-serif;
+    color: #000;
+    position: absolute;
+    right: 10px;
+    z-index: 0;
+    font-weight: bold;
+    text-shadow: 1px 1px 0px rgba(255,255,255,.15);
+}
+
+.slideThree:before {
+    content: 'ON';
+    font: 12px/26px Arial, sans-serif;
+    color: #00bf00;
+    position: absolute;
+    left: 10px;
+    z-index: 0;
+    font-weight: bold;
+}
+
+.slideThree label {
+    display: block;
+    width: 34px;
+    height: 20px;
+
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+
+    -webkit-transition: all .4s ease;
+    -moz-transition: all .4s ease;
+    -o-transition: all .4s ease;
+    -ms-transition: all .4s ease;
+    transition: all .4s ease;
+    cursor: pointer;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    z-index: 1;
+
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
+    -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
+    background: #fcfff4;
+
+    background: -webkit-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    background: -moz-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    background: -o-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    background: -ms-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfff4', endColorstr='#b3bead',GradientType=0 );
+}
+
+.slideThree input[type=checkbox]:checked + label {
+    left: 43px;
+}
+
+/* ROUNDED ONE */
+.roundedOne {
+    width: 28px;
+    height: 28px;
+    background: #fcfff4;
+
+    background: -webkit-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    background: -moz-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    background: -o-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    background: -ms-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfff4', endColorstr='#b3bead',GradientType=0 );
+    margin: 20px auto;
+
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+
+    -webkit-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+    -moz-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+    box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+    position: relative;
+}
+
+.roundedOne label {
+    cursor: pointer;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    left: 4px;
+    top: 4px;
+
+    -webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);
+    -moz-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);
+    box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);
+
+    background: -webkit-linear-gradient(top, #222 0%, #45484d 100%);
+    background: -moz-linear-gradient(top, #222 0%, #45484d 100%);
+    background: -o-linear-gradient(top, #222 0%, #45484d 100%);
+    background: -ms-linear-gradient(top, #222 0%, #45484d 100%);
+    background: linear-gradient(top, #222 0%, #45484d 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#222', endColorstr='#45484d',GradientType=0 );
+}
+
+.roundedOne label:after {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    opacity: 0;
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: #00bf00;
+
+    background: -webkit-linear-gradient(top, #00bf00 0%, #009400 100%);
+    background: -moz-linear-gradient(top, #00bf00 0%, #009400 100%);
+    background: -o-linear-gradient(top, #00bf00 0%, #009400 100%);
+    background: -ms-linear-gradient(top, #00bf00 0%, #009400 100%);
+    background: linear-gradient(top, #00bf00 0%, #009400 100%);
+
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    top: 2px;
+    left: 2px;
+
+    -webkit-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+    -moz-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+    box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+}
+
+.roundedOne label:hover::after {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+    filter: alpha(opacity=30);
+    opacity: 0.3;
+}
+
+.roundedOne input[type=checkbox]:checked + label:after {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: alpha(opacity=100);
+    opacity: 1;
+}
+
+/* ROUNDED TWO */
+.roundedTwo {
+    width: 28px;
+    height: 28px;
+    background: #fcfff4;
+
+    background: -webkit-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    background: -moz-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    background: -o-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    background: -ms-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfff4', endColorstr='#b3bead',GradientType=0 );
+    margin: 20px auto;
+
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+
+    -webkit-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+    -moz-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+    box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+    position: relative;
+}
+
+.roundedTwo label {
+    cursor: pointer;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    left: 4px;
+    top: 4px;
+
+    -webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);
+    -moz-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);
+    box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);
+
+    background: -webkit-linear-gradient(top, #222 0%, #45484d 100%);
+    background: -moz-linear-gradient(top, #222 0%, #45484d 100%);
+    background: -o-linear-gradient(top, #222 0%, #45484d 100%);
+    background: -ms-linear-gradient(top, #222 0%, #45484d 100%);
+    background: linear-gradient(top, #222 0%, #45484d 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#222', endColorstr='#45484d',GradientType=0 );
+}
+
+.roundedTwo label:after {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    opacity: 0;
+    content: '';
+    position: absolute;
+    width: 9px;
+    height: 5px;
+    background: transparent;
+    top: 5px;
+    left: 4px;
+    border: 3px solid #fcfff4;
+    border-top: none;
+    border-right: none;
+
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.roundedTwo label:hover::after {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+    filter: alpha(opacity=30);
+    opacity: 0.3;
+}
+
+.roundedTwo input[type=checkbox]:checked + label:after {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: alpha(opacity=100);
+    opacity: 1;
+}
+
+/* SQUARED ONE */
+.squaredOne {
+    width: 28px;
+    height: 28px;
+    background: #fcfff4;
+
+    background: -webkit-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    background: -moz-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    background: -o-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    background: -ms-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfff4', endColorstr='#b3bead',GradientType=0 );
+    margin: 20px auto;
+    -webkit-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+    -moz-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+    box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+    position: relative;
+}
+
+.squaredOne label {
+    cursor: pointer;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 4px;
+    top: 4px;
+
+    -webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);
+    -moz-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);
+    box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);
+
+    background: -webkit-linear-gradient(top, #222 0%, #45484d 100%);
+    background: -moz-linear-gradient(top, #222 0%, #45484d 100%);
+    background: -o-linear-gradient(top, #222 0%, #45484d 100%);
+    background: -ms-linear-gradient(top, #222 0%, #45484d 100%);
+    background: linear-gradient(top, #222 0%, #45484d 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#222', endColorstr='#45484d',GradientType=0 );
+}
+
+.squaredOne label:after {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    opacity: 0;
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: #00bf00;
+
+    background: -webkit-linear-gradient(top, #00bf00 0%, #009400 100%);
+    background: -moz-linear-gradient(top, #00bf00 0%, #009400 100%);
+    background: -o-linear-gradient(top, #00bf00 0%, #009400 100%);
+    background: -ms-linear-gradient(top, #00bf00 0%, #009400 100%);
+    background: linear-gradient(top, #00bf00 0%, #009400 100%);
+
+    top: 2px;
+    left: 2px;
+
+    -webkit-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+    -moz-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+    box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+}
+
+.squaredOne label:hover::after {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+    filter: alpha(opacity=30);
+    opacity: 0.3;
+}
+
+.squaredOne input[type=checkbox]:checked + label:after {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: alpha(opacity=100);
+    opacity: 1;
+}
+
+/* SQUARED TWO */
+.squaredTwo {
+    width: 28px;
+    height: 28px;
+    background: #fcfff4;
+
+    background: -webkit-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    background: -moz-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    background: -o-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    background: -ms-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfff4', endColorstr='#b3bead',GradientType=0 );
+    margin: 20px auto;
+
+    -webkit-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+    -moz-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+    box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+    position: relative;
+}
+
+.squaredTwo label {
+    cursor: pointer;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 4px;
+    top: 4px;
+
+    -webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);
+    -moz-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);
+    box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);
+
+    background: -webkit-linear-gradient(top, #222 0%, #45484d 100%);
+    background: -moz-linear-gradient(top, #222 0%, #45484d 100%);
+    background: -o-linear-gradient(top, #222 0%, #45484d 100%);
+    background: -ms-linear-gradient(top, #222 0%, #45484d 100%);
+    background: linear-gradient(top, #222 0%, #45484d 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#222', endColorstr='#45484d',GradientType=0 );
+}
+
+.squaredTwo label:after {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    opacity: 0;
+    content: '';
+    position: absolute;
+    width: 9px;
+    height: 5px;
+    background: transparent;
+    top: 4px;
+    left: 4px;
+    border: 3px solid #fcfff4;
+    border-top: none;
+    border-right: none;
+
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.squaredTwo label:hover::after {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+    filter: alpha(opacity=30);
+    opacity: 0.3;
+}
+
+.squaredTwo input[type=checkbox]:checked + label:after {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: alpha(opacity=100);
+    opacity: 1;
+}
+
+
+/* SQUARED THREE */
+.squaredThree {
+    width: 20px;
+    margin: 20px auto;
+    position: relative;
+}
+
+.squaredThree label {
+    cursor: pointer;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 0;
+    border-radius: 4px;
+
+    -webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,.4);
+    -moz-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,.4);
+    box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,.4);
+
+    background: -webkit-linear-gradient(top, #222 0%, #45484d 100%);
+    background: -moz-linear-gradient(top, #222 0%, #45484d 100%);
+    background: -o-linear-gradient(top, #222 0%, #45484d 100%);
+    background: -ms-linear-gradient(top, #222 0%, #45484d 100%);
+    background: linear-gradient(top, #222 0%, #45484d 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#222', endColorstr='#45484d',GradientType=0 );
+}
+
+.squaredThree label:after {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    opacity: 0;
+    content: '';
+    position: absolute;
+    width: 9px;
+    height: 5px;
+    background: transparent;
+    top: 4px;
+    left: 4px;
+    border: 3px solid #fcfff4;
+    border-top: none;
+    border-right: none;
+
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.squaredThree label:hover::after {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+    filter: alpha(opacity=30);
+    opacity: 0.3;
+}
+
+.squaredThree input[type=checkbox]:checked + label:after {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: alpha(opacity=100);
+    opacity: 1;
+}
+
+/* SQUARED FOUR */
+.squaredFour {
+    width: 20px;
+    margin: 20px auto;
+    position: relative;
+}
+
+.squaredFour label {
+    cursor: pointer;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 0;
+    border-radius: 4px;
+
+    -webkit-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+    -moz-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+    box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+    background: #fcfff4;
+
+    background: -webkit-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    background: -moz-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    background: -o-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    background: -ms-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfff4', endColorstr='#b3bead',GradientType=0 );
+}
+
+.squaredFour label:after {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    opacity: 0;
+    content: '';
+    position: absolute;
+    width: 9px;
+    height: 5px;
+    background: transparent;
+    top: 4px;
+    left: 4px;
+    border: 3px solid #333;
+    border-top: none;
+    border-right: none;
+
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.squaredFour label:hover::after {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+    filter: alpha(opacity=30);
+    opacity: 0.5;
+}
+
+.squaredFour input[type=checkbox]:checked + label:after {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: alpha(opacity=100);
+    opacity: 1;
+}
+
+/* copyright xD */
+
+#copyright {
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-family:Rock Salt;
+    font-size: 14px;
+    color: #fff;
+}
+
+  </style>
+
+  <link href="https://fonts.googleapis.com/css?family=Arial" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Handlee" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Modak" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Kalam" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Bubbler+One" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Grand+Hotel" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Butterfly+Kids" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Courier+New" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Yellowtail" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Tangerine" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Alex+Brush" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Slab" rel="stylesheet">
+</head>
+<body>
+  <!-- colors -->
+  <div id="colorBar">
+  <div id='refresh'>↺</div>
+    <input type='text' id='color' placeholder='white' readonly>
+  <div id='line'></div>
+  </div>
+  <br>
+
+  <!-- shadow button -->
+  <div id="button">
+    <span id="one"></span>
+    <span id="two"></span>
+  </div>
+
+  <!-- fonts -->
+  <p style="font-family:Arial; font-size:23px;">Arial</p>
+  <p style="font-family:Indie Flower; font-size:25px;">Indie Flower</p>
+  <p style="font-family:Handlee; font-size:25px;">Handlee</p>
+  <p style="font-family:Modak; font-size:25px;">Modak</p>
+  <p style="font-family:cursive; font-size:30px;">Cursive</p>
+  <p style="font-family:Kalam; font-size:25px;">Kalam</p>
+  <p style="font-family:Bubbler One; font-size:25px;">Bubbler One</p>
+  <p style="font-family:Grand Hotel; font-size:30px;">Grand Hotel</p>
+  <p style="font-family:Butterfly Kids; font-size:35px;">Butterfly Kids</p>
+  <p style="font-family:Shadows into light; font-size:25px;">Shadows into Light</p>
+  <p style="font-family:Lobster; font-size:30px;">Lobster</p>
+  <p style="font-family:Courgette; font-size:25px;">Courgette</p>
+  <p style="font-family:Courier New; font-size:25px;">Courier New</p>
+  <p style="font-family:Ubuntu; font-size:25px;">Ubuntu</p>
+  <p style="font-family:Yellowtail; font-size:30px;">Yellowtail</p>
+  <p style="font-family:Gloria Hallelujah; font-size:23px;">Gloria Hallelujah</p>
+  <p style="font-family:Tangerine; font-size:45px;">Tangerine</p>
+  <p style="font-family:Pacifico; font-size:25px;">Pacifico</p>
+  <p style="font-family:Cookie; font-size:35px;">Cookie</p>
+  <p style="font-family:Alex Brush; font-size:30px;">Alex Brush</p>
+  <p style="font-family:Rock Salt; font-size:20px;">Rock Salt</p>
+  <br>
+
+  <!-- loading animations -->
+  <div class="loader"></div>
+  <br><br><br>
+
+  <!-- second loader -->
+  <div class="outer">
+    <div class="middle">
+      <div class="loading-circle">
+        <div class="circle1 rotate-right"></div>
+        <div class="circle2 rotate-left"></div>
+        <div class="percent" id="percent"></div>
+      </div>
+    </div>
+  </div>
+  <br><br><br><br>
+
+  <!-- font awesome -->
+  <div id="contain">
+    <div class="spin">
+      <i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+      <span class="sr-only"></span>
+    </div>
+    <br>
+
+    <div class="spin">
+      <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+      <span class="sr-only"></span>
+    </div>
+    <br>
+
+    <div class="spin">
+      <i class="fa fa-refresh fa-spin fa-3x fa-fw"></i>
+      <span class="sr-only"></span>
+    </div>
+    <br>
+
+    <div class="spin">
+      <i class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+      <span class="sr-only"></span>
+    </div>
+    <br>
+
+    <div class="spin">
+      <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+      <span class="sr-only"></span>
+    </div>
+  </div>
+  <br><br><br>
+
+  <!-- checkboxes -->
+  <!-- Slide ONE -->
+  <div class="slideOne">
+    <input type="checkbox" value="None" id="slideOne" name="check" />
+    <label for="slideOne"></label>
+  </div>
+
+  <!-- Slide TWO -->
+  <div class="slideTwo">
+    <input type="checkbox" value="None" id="slideTwo" name="check" />
+    <label for="slideTwo"></label>
+  </div>
+
+  <!-- Slide THREE -->
+  <div class="slideThree">
+    <input type="checkbox" value="None" id="slideThree" name="check" />
+    <label for="slideThree"></label>
+  </div>
+
+  <!-- Rounded ONE -->
+  <div class="roundedOne">
+    <input type="checkbox" value="None" id="roundedOne" name="check" />
+    <label for="roundedOne"></label>
+  </div>
+
+  <!-- Rounded TWO -->
+  <div class="roundedTwo">
+    <input type="checkbox" value="None" id="roundedTwo" name="check" />
+    <label for="roundedTwo"></label>
+  </div>
+
+  <!-- Squared ONE -->
+  <div class="squaredOne">
+    <input type="checkbox" value="None" id="squaredOne" name="check" />
+    <label for="squaredOne"></label>
+  </div>
+
+  <!-- Squared TWO -->
+  <div class="squaredTwo">
+    <input type="checkbox" value="None" id="squaredTwo" name="check" />
+    <label for="squaredTwo"></label>
+  </div>
+
+  <!-- Squared THREE -->
+  <div class="squaredThree">
+    <input type="checkbox" value="None" id="squaredThree" name="check" />
+    <label for="squaredThree"></label>
+  </div>
+
+  <!-- Squared FOUR -->
+  <div class="squaredFour">
+    <input type="checkbox" value="None" id="squaredFour" name="check" />
+    <label for="squaredFour"></label>
+  </div>
+
+  <!-- transforms -->
+  <!--<h1>Transtions & Transforms </h1>-->
+  <h2>CSS3 Transitions</h2>
+  <br/>
+  <div class="duration">Hover over me</div>
+  <h3>Transition-Timing-Function</h3>
+  <br/>
+  <ul>
+    <li>ease - <span>(Default) Animation Start Slowly , Accelerates quikly</span></li>
+    <li>ease-in - <span>Start Slowly, Stop Accelerates</span></li>
+    <li>ease-out - <span>Start Quickly, Stop Deccelerates</span></li>
+    <li>ease-in-out - <span>Similar To "ease", Accelerates & Deccelerates Are More Subtle</span></li>
+    <li>linear - <span>Constant Speed In Animation, Best For Color & Opacity Changes</span></li>
+  </ul>
+
+  <h2>CSS3 Transform</h2>
+  <h3>Rotate</h3>
+  <h5>Two Methods In The Rotate Value</h5>
+  <div class="p-rotate">Positive Value - ( Clockwise )</div>
+  <div class="n-rotate">Negative Value - ( Counter-Clockwise )</div>
+  <h3>Origin</h3>
+  <div class="empty"></div>
+  <div class="origin">Change position of transformed element</div>
+  <h3>Translate</h3>
+  <div class="translate">Moves an element from its current position</div>
+  <br/><br/><br/><br/><br/><br/><br/>
+  <h3>Skew</h3>
+  <div class="skew"></div>
+  <h3>Radius</h3>
+  <div class="radius">border-radius: 10px 50px;</div>
+  <h3>Scale</h3>
+  <div class="scale1">Increases or Decreases the Size of Elements</div>
+  <br/>
+  <div class="scale2">Increases or Decreases the Size of Elements</div>
+  <h3>Multiple Transforms</h3>
+  <div class="multiple-t">Just Separate Them Using Space</div>
+
+  <h2>@KeyFrames & Animations</h2>
+  <h3>@KeyFrames</h3>
+  <br/>
+  <div class="keyframes"></div>
+  <h3>Animations</h3>
+  <h4>animation-name: ;</h4>
+  <h5>Animation Name for Current Element</h5>
+  <h4>animation-duration: ;</h4>
+  <h5>Duration of the Selected Animation(s, ms)</h5>
+  <h4>animation-selay: ;</h4>
+  <h5>Add a Delay Before Animation Start(s, ms)</h5>
+  <h4>animation-iteration-count: ;</h4>
+  <h5>Number of Times the Animation Repeats</h5>
+  <h4>animation-iteration-count: infinite;</h4>
+  <h5>Make Animation Repeat Forever</h5>
+  <h4>animation-direction: ;</h4>
+  <h5>How the Animation is Played</h5>
+    <ul>
+    <li>Normal - <span>(Default) It plays from 0% to 100%</span></li>
+    <li>Reverse - <span>It plays the opposite direction, from 100% to 0%</span></li>
+    <li>Alternate - <span>Animation first run forward, then backwards & backwards</span></li>
+    <li>Alternate reverse - <span>Animation first run backwards, then forward & backwards</span></li>
+  </ul>
+  <h3>This uses Name, Duration, Delay, Iteration-count and Direction Values
+    <div class="rect1"></div>
+    <div class="rect2"></div>
+  </h3>
+
+  <h2>3D Transforms</h2>
+  <div class="X">transform: rotateX()</div>
+  <div class="Y">transform: rotateY()</div>
+  <div class="Z">transform: rotateZ()</div>
+  <br/>
+  <br/>
+  <h3>Translations</h3>
+  <h5>translate3D</h5>
+  <br/>
+  <h5>scale3D</h5>
+  <br/>
+  <h5>rotate3D</h5>
+  <div class="trans">translateX(30px);<br>translateY(2em);<br>translateZ(-13px);</div>
+  <br/>
+  <br/>
+  <div class="trans2">translate3D(30px, 2em, -15px);</div>
+  <br/>
+  <br/>
+  <h3>Perspective</h3>
+  <div class="angel">Thank you :)</div>
+  <div class="none"></div>
+
+  <!-- copyright xD -->
+  <div id="copyright">SaddleSneeze © 2018</div>
+
+  <script>
+    // colors
+
+    $(function(){
+    colors = {
+      'absolute zero': '#0048ba',
+      'abbiexxxx': '#4c2f27',
+      'acid green': '#b0bf1a',
+      'aero blue': '#7cb9e8',
+      'aero': '#c9ffe5',
+      'african violet': '#b284be',
+      'air force blue (raf)': '#5d8aa8',
+      'air force blue (usaf)': '#00308f',
+      'air superiority blue': '#72a0c1',
+      'alabama crimson': '#af002a',
+      'alabaster': '#f2f0e6',
+      'alice blue': '#f0f8ff',
+      'alien armpit': '#84de02',
+      'alizarin crimson': '#e32636',
+      'alloy orange': '#c46210',
+      'almond': '#efdecd',
+      'amaranth': '#e52b50',
+      'amaranth deep purple': '#9f2b68',
+      'amaranth pink': '#f19cbb',
+      'amaranth purple': '#ab274f',
+      'amaranth red': '#d3212d',
+      'amazon': '#3b7a57',
+      'amazonite': '#00c4b0',
+      'amber': '#ffbf00',
+      'amber (sae/ece)': '#ff7e00',
+      'american rose': '#ff033e',
+      'amethyst': '#9966cc',
+      'android green': '#a4c639',
+      'anti-flash white': '#f2f3f4',
+      'antique brass': '#cd9575',
+      'antique bronze': '#665d1e',
+      'antique fuchsia': '#915c83',
+      'antique ruby': '#841b2d',
+      'antique white': '#faebd7',
+      'ao (english)': '#008000',
+      'apple green': '#8db600',
+      'apricot': '#fbceb1',
+      'aqua': '#00ffff',
+      'aquamarine': '#7fffd4',
+      'arctic lime': '#d0ff14',
+      'army green': '#4b5320',
+      'arsenic': '#3b444b',
+      'artichoke': '#8f9779',
+      'arylide yellow': '#e9d66b',
+      'ash grey': '#b2beb5',
+      'asparagus': '#87a96b',
+      'atomic tangerine': '#ff9966',
+      'auburn': '#a52a2a',
+      'aureolin': '#fdee00',
+      'aurometalsaurus': '#6e7f80',
+      'avocado': '#568203',
+      'awesome': '#ff2052',
+      'aztec gold': '#c39953',
+      'azure': '#007fff',
+     'azure (web color)': '#f0ffff',
+      'azure mist': '#f0ffff',
+      'azureish white': '#dbe9f4',
+      'baby blue': '#89cff0',
+      'baby blue eyes': '#a1caf1',
+      'baby pink': '#f4c2c2',
+      'baby powder': '#fefefa',
+      'baker-miller pink': '#ff91af',
+      'ball blue': '#21abcd',
+      'banana mania': '#fae7b5',
+      'banana yellow': '#ffe135',
+      'bangladesh green': '#006a4e',
+      'barbie pink': '#e0218a',
+      'barn red': '#7c0a02',
+      'battery charged blue': '#1dacd6',
+      'battleship grey': '#848482',
+      'bazaar': '#98777b',
+      'beau blue': '#bcd4e6',
+      'beaver': '#9f8170',
+      'begonia': '#fa6e79',
+      'beige': '#f5f5dc',
+        'b\'dazzled blue': '#2e5894',
+      'big dip o’ruby': '#9c2542',
+      'big foot feet': '#e88e5a',
+      'bisque': '#ffe4c4',
+      'bistre': '#3d2b1f',
+      'bistre brown': '#967117',
+      'bitter lemon': '#cae00d',
+      'bitter lime': '#bfff00',
+      'bittersweet': '#fe6f5e',
+      'bittersweet shimmer': '#bf4f51',
+      'black': '#000000',
+      'black bean': '#3d0c02',
+      'black coral': '#54626f',
+      'black leather jacket': '#253529',
+      'black olive': '#3b3c36',
+      'black shadows': '#bfafb2',
+      'blanched almond': '#ffebcd',
+      'blast-off bronze': '#a57164',
+      'bleu de france': '#318ce7',
+      'blizzard blue': '#ace5ee',
+      'blond': '#faf0be',
+      'blue': '#0000ff',
+      'blue (crayola)': '#1f75fe',
+      'blue (munsell)': '#0093af',
+      'blue (ncs)': '#0087bd',
+      'blue (pantone)': '#0018a8',
+      'blue (pigment)': '#333399',
+      'blue (ryb)': '#0247fe',
+      'blue bell': '#a2a2d0',
+      'blue bolt': '#00b9fb',
+      'blue-gray': '#6699cc',
+      'blue-green': '#0d98ba',
+        'blue jeans': '#5dadec',
+      'blue lagoon': '#ace5ee',
+      'blue-magenta violet': '#553592',
+      'blue sapphire': '#126180',
+      'blue-violet': '#8a2be2',
+      'blue yonder': '#5072a7',
+      'blueberry': '#4f86f7',
+      'bluebonnet': '#1c1cf0',
+      'blush': '#de5d83',
+      'bole': '#79443b',
+      'bondi blue': '#0095b6',
+      'bone': '#e3dac9',
+      'booger buster': '#dde26a',
+      'boston university red': '#cc0000',
+      'bottle green': '#006a4e',
+      'boysenberry': '#873260',
+      'brandeis blue': '#0070ff',
+      'brass': '#b5a642',
+      'brick red': '#cb4154',
+      'bright cerulean': '#1dacd6',
+      'bright green': '#66ff00',
+      'bright lavender': '#bf94e4',
+      'bright lilac': '#d891ef',
+      'bright maroon': '#c32148',
+      'bright navy blue': '#1974d2',
+      'bright pink': '#ff007f',
+      'bright turquoise': '#08e8de',
+      'bright ube': '#d19fe8',
+      'bright yellow (crayola)': '#ffaa1d',
+      'brilliant azure': '#3399ff',
+      'brilliant lavender': '#f4bbff',
+      'brilliant rose': '#ff55a3',
+      'brink pink': '#fb607f',
+      'british racing green': '#004225',
+        'carmine red': '#ff0038',
+      'carnation pink': '#ffa6c9',
+      'carnelian': '#b31b1b',
+      'carolina blue': '#56a0d3',
+      'carrot orange': '#ed9121',
+      'castleton green': '#00563f',
+      'catalina blue': '#062a78',
+      'catawba': '#703642',
+      'cedar chest': '#c95a49',
+      'ceil': '#92a1cf',
+      'celadon': '#ace1af',
+      'celadon blue': '#007ba7',
+      'celadon green': '#2f847c',
+      'celeste': '#b2ffff',
+      'celestial blue': '#4997d0',
+      'cerise': '#de3163',
+      'cerise pink': '#ec3b83',
+      'cerulean': '#007ba7',
+      'cerulean blue': '#2a52be',
+      'cerulean frost': '#6d9bc3',
+      'cg blue': '#007aa5',
+
+      'yankees blue': '#1c2841',
+      'yellow': '#ffff00',
+      'yellow (crayola)': '#fce883',
+      'yellow (munsell)': '#efcc00',
+      'yellow (ncs)': '#ffd300',
+      'yellow (pantone)': '#fedf00',
+      'yellow (process)': '#ffef00',
+      'yellow (ryb)': '#fefe33',
+      'yellow-green': '#9acd32',
+      'yellow orange': '#ffae42',
+      'yellow rose': '#fff000',
+      'yellow sunshine': '#fff700',
+      'zaffre': '#0014a8',
+      'zinnwaldite brown': '#2c1608',
+      'zomp': '#39a78e',
+        'coffee': '#6f4e37',
+      'columbia blue': '#c4d8e2',
+      'congo pink': '#f88379',
+      'cool black': '#002e63',
+      'cool grey': '#8c92ac',
+      'copper': '#b87333',
+      'copper (crayola)': '#da8a67',
+      'copper penny': '#ad6f69',
+      'copper red': '#cb6d51',
+      'copper rose': '#996666',
+      'coquelicot': '#ff3800',
+      'coral': '#ff7f50',
+      'coral pink': '#f88379',
+      'coral red': '#ff4040',
+      'coral reef': '#fd7c6e',
+      'cordovan': '#893f45',
+      'corn': '#fbec5d',
+      'cornell red': '#b31b1b',
+      'cornflower blue': '#6495ed',
+      'cornsilk': '#fff8dc',
+      'cosmic cobalt': '#2e2d88',
+      'cosmic latte': '#fff8e7',
+      'coyote brown': '#81613c',
+      'cotton candy': '#ffbcd9',
+      'cream': '#fffdd0',
+      'crimson': '#dc143c',
+      'crimson glory': '#be0032',
+
+    }
+
+    $('#color').keyup(function() {
+      $('#line').css('background-color', ($(this).val().toLowerCase() in colors) ? colors[$(this).val().toLowerCase()] : $(this).val());
+    });
+
+    $('#refresh').click(function() {
+      $(this).addClass('animated');
+      $('#color').val(Object.keys(colors)[Math.floor(Math.random() * Object.keys(colors).length)]);
+      $('#color').keyup();
+    });
+
+    $('#refresh').on('animationend', function() {
+      $(this).removeClass('animated');
+    });
+
+    $('#refresh').click();
+    });
+
+    // shadow button
+    window.onload = function() {
+        const button = document.querySelector("#button");
+
+        button.onclick = function() {
+            if(!this.classList.contains("active")) {
+                this.classList.add("active");
+            } else {
+                this.classList.remove("active");
+            }
+        }
+    }
+
+    // second loader
+    $(document).ready(function(){
+ var i = 0;
+ var interval = setInterval(percent, 200);
+ function percent() {
+  if (i >=100) {
+   clearInterval(interval);
+   /* code executed after progress is at 100% */
+   //alert("Download Complete");
+  } else {
+   i++; 
+   $("#percent").text(i + "%"); 
+  }
+ }
+});
+
+  </script>
+</body>
+</html>

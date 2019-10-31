@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Time is Money</title>
+  <link href="https://fonts.googleapis.com/css?family=Handlee" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Handlee', cursive;
+      overflow: hidden;
+    }
+
+    div {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 6px;
+      padding: 50px;
+      background: rgba(221, 221, 221, 0.4);
+      /* filter: drop-shadow(1px 1px 5px rgba(0, 0, 0, 0.4)); */
+      box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+      text-align: center;
+
+      /* backdrop-filter: blur(16px); */
+    }
+
+    h1 {
+      font-size: 60px;
+      font-weight: bold;
+    }
+
+    .bg-image {
+      height: 100%;
+      width: 100%;
+
+      filter: blur(6px);
+      -webkit-filter: blur(6px);
+
+      background-image: url('https://cdn.pixabay.com/photo/2017/10/10/07/48/beach-2836300_960_720.jpg');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .blur {
+      width: 100%;
+      height: 100%;
+
+      filter: blur(6px);
+      -webkit-filter: blur(6px);
+    }
+
+    input {
+      padding: 20px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      outline: none;
+      font-size: 16px;
+    }
+
+    #output {
+      font-size: 26px;
+      font-weight: bold;
+    }
+    #payment {
+      font-size: 24px;
+    }
+
+
+  </style>
+</head>
+<body>
+  <div class="bg-image">
+    <!-- <div class="blur"></div> -->
+  </div>
+
+  <div>
+    <h1>Time is Money</h1>
+    <input id="time" placeholder="Enter time...">
+    <h2 id="output">0.00t</h2>
+    <p id="payment">0.00kr</p>
+  </div>
+
+  <script>
+    var payment = 110; // kr per hour
+    var hours = [];
+
+    document.getElementById('time').addEventListener("input", function() { // change?
+      // reset values when cleared
+      if (this.value == '') {
+        hours = [];
+      }
+
+      var value = this.value.split(/-|:/).join('').split(' ');
+      // console.log(value);
+
+      for (var i = 0; i < value.length; i++) {
+        var from = value[i].substring(0, 2) + ":" + value[i].substring(2, 4);
+        var to = value[i].substring(4, 6) + ":" + value[i].substring(6, 8);
+        var start = new Date("July 25, 2019 " + from + ":00").getTime();
+        var end = new Date("July 25, 2019 " + to + ":00").getTime();
+
+        var minutes = (end - start) / (1000*60);
+        hours[i] = (minutes / 60).toFixed(2);
+
+        if (i == value.length - 1) {
+          var hoursAll = eval(hours.join('+')).toFixed(2);
+          var money = (hoursAll * payment).toFixed(2);
+
+          document.getElementById('output').innerText = hoursAll + 't';
+          document.getElementById('payment').innerText = money + 'kr';
+        }
+
+        if (value[i] !== '') {
+          // log output
+          console.log('[' + i + '] ' + from + ' - ' + to + ' == ' + minutes + 'm -> ' + hours[i] + 't -> ' + (hours[i] * payment).toFixed(2) + 'kr');
+        }
+      }
+      if (hours.length > 1) {
+        // log average minutes
+        console.log('Average minutes in ' + hours.length + ' days = ' + ((hoursAll / hours.length) * 60).toFixed(0) + 'm');
+      }
+    })
+  </script>
+</body>
+</html>
