@@ -3,24 +3,24 @@
   to = "/error/file-not-found.html"
   status = 404
 
-[[redirects]]
-  from = "/profile.html"
-  to = "/profil/"
-  status = 301
-  force = false
-  query = {path = ":path"}
-  # conditions = {Language = ["en"], Country = ["US"], Role = ["admin"]}
-
-[[redirects]]
-  from = "/login.html"
-  to = "/logg_inn/"
-  status = 301
-  force = false
-  query = {path = ":path"}
-
-[[redirects]]
-  from = "*/index.html"
-  to = "../"
-  status = 301
-  force = false
-  query = {path = ":path"}
+# [[redirects]]
+#   from = "/profile.html"
+#   to = "/profil/"
+#   status = 301
+#   force = false
+#   query = {path = ":path"}
+#   # conditions = {Language = ["en"], Country = ["US"], Role = ["admin"]}
+#
+# [[redirects]]
+#   from = "/login.html"
+#   to = "/logg_inn/"
+#   status = 301
+#   force = false
+#   query = {path = ":path"}
+#
+# [[redirects]]
+#   from = "*/index.html"
+#   to = "../"
+#   status = 301
+#   force = false
+#   query = {path = ":path"}
