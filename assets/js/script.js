@@ -21,11 +21,48 @@ var files = [
   'Dragging', '10',
   'f:Paint', '2'
 ];
-
 var lessThan = 50;
 var islessThan = false;
+
+
+var songs = [
+  'Valley',
+  'United',
+  'Hopes',
+  'A New Start',
+  'A Better Time',
+  'Chained',
+  'A Knights Battle',
+  'Space Station',
+  'Mistakes',
+  'Orchestria (Emotional)',
+  'Galaxies',
+  'Twins',
+  'Space',
+  'Moving',
+  'K-391 - Mystery (Vizzber Remix)',
+  'Move (Instrumental)',
+  'Move',
+  'Fall',
+  'City',
+  'In The Dark',
+  'Back home',
+  'Good Memories (Emotional)',
+  'Rising (feat. Flåklypa)',
+  'Gravity',
+  'Dreams',
+  'Atmosphere',
+  'old:Live',
+  'old:Hope',
+  'old:Happy',
+  'old:Sad',
+  'old:Emotional'
+];
+
+
 (function onLoad() {
   if (!window.location.href.includes("prosjekt") || window.location.href.includes("prosjekter")) {
+    // project list
     var container = document.getElementById("project_list");
     for (var i = 0; i < files.length; i += 2) {
       var name = files[i];
@@ -47,6 +84,45 @@ var islessThan = false;
       } else {
         container.innerHTML = container.innerHTML + '<h5 class="description"><a href="javascript:void(0)" class="' + classList + '">' + name + '</a></h5>' +
         '<div class="progress progress-line-primary"><div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="' + completeness + '" aria-valuemin="0" aria-valuemax="100" style="width: ' + completeness + '%;"><span class="sr-only">' + completeness + '% Complete</span></div></div>';
+      }
+    }
+
+    // music grid (31 songs)
+    var counter = 0;
+    var row = 0;
+    for (var j = 0; j < songs.length; j++) {
+      var song = songs[j];
+      // console.log(song);
+      if (counter == 0) {
+        document.getElementById("images").innerHTML = document.getElementById("images").innerHTML + '<div class="row cover-row" id="row' + row + '"></div>';
+      }
+      // console.log(songs_container);
+      if (song.includes("old:")) {
+        song = song.slice(4, song.length);
+      }
+      var songs_container = document.getElementById("row" + row);
+      var rowClassList = "col-sm-2 ml-auto cover-column";
+      if (counter == 0) {
+        rowClassList = "col-sm-2 cover-column";
+      }
+      var src = "./assets/music/covers/" + song + ".jpg";
+      // var img = new Image();
+      // img.onload = function() { console.log('Success'); };
+      // img.onerror = function() { src = "./assets/img/faces/avatar.jpg"; };
+      // img.src = src;
+      // if (src == undefined) {
+      //   src = "./assets/img/faces/avatar.jpg";
+      //   console.log(1);
+      // }
+      songs_container.innerHTML = songs_container.innerHTML + '<div class="' + rowClassList + '" onclick="playSong(' + j + ')">' +
+      '<img src="' + src + '" alt="Cover for ' + song + '" class="rounded img-fluid hoverZoomLink cover">' +
+      '<h4>' + song + '</h4>' +
+      '</div>';
+      if (counter == 3) {
+        counter = 0;
+        row++;
+      } else {
+        counter++;
       }
     }
   }
@@ -98,6 +174,35 @@ function openProject() {
 //         document.title = e.state.pageTitle;
 //     }
 // };
+
+
+var audio;
+function playSong(index) {
+  // console.log(audio);
+  var song = songs[index];
+  var src = './assets/music/' + song + '.wav';
+  new Audio(src).onerror = function() { src = './assets/music/' + song + '.mp3'; };
+  setTimeout(function () {
+    if (audio !== undefined) {
+      audio.src = src;
+    } else {
+      audio = new Audio(src);
+      audio.id = "audio";
+    }
+    audio.play();
+  }, 10);
+}
+
+// TODO: make an audio player
+
+// myaudio.play(); - This will play the music.
+// myaudio.pause(); - This will stop the music.
+// myaudio.duration; - Returns the length of the music track.
+// myaudio.currentTime = 0; - This will rewind the audio to the beginning.
+// myaudio.loop = true; - This will make the audio track loop.
+// myaudio.muted = true; - This will mute the track
+
+// If you want a function to be called once the audio has finished playing then you can use 'myaudio.addEventListener('ended',myfunc)' - This will call 'myfunc()' once the audio has finished.
 
 
 

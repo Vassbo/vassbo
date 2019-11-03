@@ -61,6 +61,38 @@ html {
 #showLessThanBtn:not(.btn-link) {
   background: var(--primary-color);
 }
+/* .btn.btn-primary:focus, .btn.btn-primary.focus, .btn.btn-primary:hover {
+    color: #fff;
+    background-color: var(--primary-color);
+    border-color: #d14925;
+} */
+
+#images .cover-row .col-sm-2 {
+  flex: 0 0 20.666667%;
+  max-width: 20.666667%;
+  padding-right: 0px;
+  padding-left: 0px;
+}
+#images .cover-row {
+  margin-right: 40px;
+  margin-left: 40px;
+}
+#images .cover-row:not(:first-child) { /* not working... */
+  margin-top: 20px;
+}
+
+.cover {
+  cursor: pointer;
+  transition: .2s;
+
+  /* src: https://alligator.io/css/cropping-images-object-fit/ */
+  /* max-width: 100%; */
+  height: 200px !important;
+  object-fit: cover;
+}
+.cover:hover {
+  box-shadow: 0 5px 15px -8px rgba(0, 0, 0, 0.24), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+}
 
 /*********************************************/
 
