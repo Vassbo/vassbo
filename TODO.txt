@@ -1,0 +1,5 @@
+- upload music, html repository on github
+- Custom logo?
+- music loading indicator
+- mp3 files not working on website
+- SoloLearn
