@@ -114,9 +114,10 @@ html {
   height: 200px !important;
   object-fit: cover;
 }
-.cover:hover {
+.cover:hover:not(#trackCover) {
   box-shadow: 0 5px 15px -8px rgba(0, 0, 0, 0.24), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
-  filter: brightness(0.9);
+  /* filter: brightness(0.9); */
+  filter: brightness(1.2);
 }
 
 
@@ -132,6 +133,14 @@ html {
   height: 60px !important;
   width: 60px;
   margin-right: 10px;
+}
+
+.track_action {
+  padding: 0.6rem !important;
+  cursor: pointer;
+}
+.track_action:hover {
+  background: rgba(0, 0, 0, 0.05);
 }
 
 /*********************************************/

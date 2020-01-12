@@ -20,8 +20,8 @@
   <body><nav class="navbar navbar-color-on-scroll navbar-transparent fixed-top navbar-expand-lg"  color-on-scroll="100">
   <div class="container">
       <div class="navbar-translate">
-        <a class="navbar-brand" href="#">
-          Kristoffer </a>
+        <a class="navbar-brand noselect" href="#" draggable="false">
+          Hjem </a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
@@ -34,18 +34,21 @@
       <div class="collapse navbar-collapse">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a href="om.html" class="nav-link" draggable="false">
-                  <i class="material-icons">face</i> Om meg
+              <a href="#musikk" class="nav-link noselect" draggable="false">
+                <i class="material-icons">music_note</i> Musikk
               </a>
             </li>
             <li class="nav-item">
-              <a href="#prosjekter" class="nav-link" draggable="false">
-                  <i class="material-icons">folder_open</i> Prosjekter
+              <a href="#prosjekter" class="nav-link noselect" draggable="false">
+                  <!-- <i class="material-icons">folder</i> Prosjekter -->
+                  <i class="material-icons">insert_drive_file</i> Prosjekter
+                  <!-- insert_drive_file, description, bookmark, folder, folder_open -->
               </a>
             </li>
             <li class="nav-item">
-              <a href="#musikk" class="nav-link" draggable="false">
-                  <i class="material-icons">music_note</i> Musikk
+              <a href="om.html" class="nav-link noselect" draggable="false">
+                <i class="material-icons">person</i> Om meg
+                <!-- face, perm_identity, mood, person, school -->
               </a>
             </li>
             <!-- <li class="nav-item">
@@ -92,96 +95,33 @@
   </div>
 </div>
 
+<!-- TODO: custom background (firverkery.html) at night/at day -->
+
 <div class="main main-raised">
-  <div class="container" id="prosjekter">
-    <!-- <div class="section text-center">
-      <h2 class="title">Your main section here</h2>
-    </div> -->
-
-
-
-    <!-- TODO: custom background (firverkery.html) at night/at day -->
-
-
-    <div class="section text-left">
-      <div class="row">
-        <div id="project_list" class="col-md-8 ml-auto mr-auto">
-          <h2 class="title text-center">Prosjekter</h2>
-          <!-- added by js -->
-
-
-
-        <!-- TODO: merge onto one... -->
-          <!-- <div class="col-md-6 ml-auto mr-auto"> -->
-            <!-- <div class="profile-tabs"> -->
-              <!-- <ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
-                <li class="nav-item">
-                  <a class="nav-link active show" href="#education" role="tab" data-toggle="tab" aria-selected="true">
-                    <i class="material-icons">school</i> Utdanning
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#work" role="tab" data-toggle="tab" aria-selected="false">
-                    <i class="material-icons">work</i> Arbeid
-                  </a>
-                </li>
-              </ul> -->
-            <!-- </div> -->
-          <!-- </div> -->
-
-
-        <!-- <div class="tab-content tab-space">
-          <div class="tab-pane text-center active show" id="education">
-              <p><b>Barneskule:</b> Lye Skule <i>(2007-2015)</i></p>
-              <p><b>Ungdomsskule:</b> Lye Ungdomsskule <i>(2015-2018)</i></p>
-              <p><b>1. videregående:</b> Elektrofag - Tryggheim Skular <i>(2018-2019)</i></p>
-              <p><b>2. videregående:</b> Elenergi - Tryggheim Skular <i>(2019-2020)</i></p>
-          </div>
-
-          <div class="tab-pane text-center gallery" id="work">
-              <p><b>Hagearbeid:</b> Heime <i>(2018)</i></p>
-              <p><b>Lyngdal Bibelcamp:</b> Lye Ungdomsskule <i>(2019)</i></p>
-          </div> -->
-
-
-
-
-        </div>
-      </div>
-    </div>
-  </div>
-
 
   <div class="container" id="musikk">
-    <div id="images">
-      <div class="text-center title">
-        <h2>Musikk</h2>
+    <div class="section"> <!-- text-left -->
+      <div id="images">
+        <h2 class="text-center">Musikk</h2> <!-- title -->
+        <br>
+        <!-- added by js -->
       </div>
-      <br>
-
-
-      <!-- <div class="row cover-row" id="first">
-        <div class="col-sm-2 cover-column">
-          <img src="./assets/img/faces/avatar.jpg" alt="Rounded Image" class="rounded img-fluid hoverZoomLink cover">
-          <h4>Rounded Image</h4>
-        </div>
-        <div class="col-sm-2 ml-auto cover-column">
-          <img src="./assets/img/faces/avatar.jpg" alt="Rounded Image" class="rounded img-fluid hoverZoomLink cover">
-          <h4>Rounded Image</h4>
-        </div>
-        <div class="col-sm-2 ml-auto cover-column">
-          <img src="./assets/img/faces/avatar.jpg" alt="Rounded Image" class="rounded img-fluid hoverZoomLink cover">
-          <h4>Rounded Image</h4>
-        </div>
-        <div class="col-sm-2 ml-auto cover-column">
-          <img src="./assets/img/faces/avatar.jpg" alt="Rounded Image" class="rounded img-fluid hoverZoomLink cover">
-          <h4>Rounded Image</h4>
-        </div>
-      </div> -->
-
-
     </div>
   </div>
+
+
+  <div class="container" id="prosjekter">
+    <div class="section">
+      <div class="row">
+        <div id="project_list" class="col-md-8 ml-auto mr-auto">
+          <h2 class="text-center">Prosjekter</h2> <!-- title -->
+          <!-- <br> -->
+          <!-- added by js -->
+        </div>
+      </div>
+    </div>
+  </div>
+
 
 
   <div class="container" id="contact">
@@ -190,28 +130,28 @@
         <div class="col-md-8 ml-auto mr-auto">
           <h2 class="text-center title">Kontakt meg</h2>
           <!-- <h4 class="text-center description">Gi forslag, tilbakemelding...</h4> TODO: contact -->
-          <form class="contact-form" netlify>
+          <form class="contact-form" name="contact" method="POST" data-netlify="true"> <!-- netlify -->
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group bmd-form-group">
                   <label class="bmd-label-floating">Navnet ditt</label>
-                  <input type="text" class="form-control">
+                  <input type="text" class="form-control" name="name">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group bmd-form-group">
                   <label class="bmd-label-floating">E-postadressen din</label>
-                  <input type="email" class="form-control">
+                  <input type="email" class="form-control" name="email">
                 </div>
               </div>
             </div>
             <div class="form-group bmd-form-group">
               <label for="exampleMessage" class="bmd-label-floating">Skriv en melding</label>
-              <textarea type="text" class="form-control" rows="4" id="exampleMessage"></textarea>
+              <textarea type="text" class="form-control" rows="4" id="exampleMessage" name="message"></textarea>
             </div>
             <div class="row">
               <div class="col-md-4 ml-auto mr-auto text-center">
-                <button class="btn btn-primary btn-raised">
+                <button class="btn btn-primary btn-raised" type="submit">
                   Send Melding
                 </button>
               </div>
@@ -248,43 +188,43 @@
       </button> -->
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse">
+    <div class="collapse navbar-collapse noselect">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a href="#pablo" class="nav-link track_action" draggable="false" style="padding: 0.6rem;">
+          <a class="nav-link track_action" draggable="false">
             <i class="material-icons">skip_previous</i>
           </a>
         </li>
         <li class="nav-item">
-          <a href="#pablo" class="nav-link track_action" draggable="false" style="padding: 0.6rem;">
+          <a class="nav-link track_action" draggable="false">
             <i class="material-icons" id="play_pause">pause</i>
             <!-- <i class="material-icons">play_arrow</i> -->
           </a>
         </li>
         <li class="nav-item">
-          <a href="#pablo" class="nav-link track_action" draggable="false" style="padding: 0.6rem;">
+          <a class="nav-link track_action" draggable="false">
             <i class="material-icons">skip_next</i>
           </a>
         </li>
         <li class="nav-item">
-          <a href="#pablo" class="nav-link track_action" draggable="false" style="padding: 0.6rem;">
+          <a class="nav-link track_action" draggable="false">
             <i class="material-icons">shuffle</i>
           </a>
         </li>
         <li class="nav-item">
-          <a href="#pablo" class="nav-link track_action" draggable="false" style="padding: 0.6rem;">
-            <i class="material-icons">repeat</i>
+          <a class="nav-link track_action" draggable="false">
+            <i class="material-icons" style="color: var(--primary-color);">repeat</i>
           </a>
         </li>
         <li class="nav-item">
-          <a href="#pablo" class="nav-link track_action" draggable="false" style="padding: 0.6rem;">
-            <i class="material-icons">volume_up</i>
+          <a class="nav-link track_action" draggable="false">
+            <i class="material-icons" id="volumeBtn">volume_up</i>
             <!-- <button type="button" class="btn" data-toggle="tooltip" data-placement="top" title="" data-container="body" data-original-title="Tooltip on top">On top<div class="ripple-container"></div></button>
             <div id="sliderRegular" class="slider noUi-target noUi-ltr noUi-horizontal"><div class="noUi-base"><div class="noUi-connect" style="left: 0%; right: 48.8889%;"></div><div class="noUi-origin" style="left: 51.1111%;"><div class="noUi-handle noUi-handle-lower" data-handle="0" style="z-index: 4;"></div></div></div></div> -->
           </a>
         </li>
         <li class="nav-item">
-          <a href="#pablo" class="nav-link track_action" draggable="false" style="padding: 0.6rem;">
+          <a class="nav-link track_action" draggable="false">
             <i class="material-icons" id="fullscreenBtn">fullscreen</i>
           </a>
         </li>
@@ -306,7 +246,7 @@
 </nav>
 
 
-<img id="BIGcover" src="" class="hidden" style="position:fixed;top:50%;left:50%;transform:translate(-50%, -50%);width:100vw;height:100vh;object-fit:cover;z-index:1090;">
+<img id="BIGcover" src="" class="hidden noselect" style="position:fixed;top:50%;left:50%;transform:translate(-50%, -50%);width:100vw;height:100vh;object-fit:cover;z-index:1090;">
 
 
 <footer class="footer footer-default" >
@@ -325,7 +265,7 @@
         <script>
             document.write(new Date().getFullYear())
         </script>, laget med <i class="material-icons">favorite</i> av
-        <a href="https://www.creative-tim.com/" target="blank">Creative Tim</a> for et bedre nett.
+        <a href="https://www.creative-tim.com/" target="blank">Creative Tim</a> for et bedre internett.
     </div>
   </div>
 </footer>
@@ -347,6 +287,7 @@
 
 <!-- my own script -->
 <script src="assets/js/script.js" type="text/javascript"></script>
+<script src="assets/js/imageData.js" type="text/javascript"></script>
 
 
 

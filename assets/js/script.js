@@ -52,12 +52,12 @@ var songs = [
   'Rising (feat. Flåklypa)',
   'Gravity',
   'Dreams',
-  'Atmosphere'
-  // 'old:Live',
-  // 'old:Hope',
-  // 'old:Happy',
-  // 'old:Sad',
-  // 'old:Emotional'
+  'Atmosphere',
+  'old:Live',
+  'old:Hope',
+  'old:Happy',
+  'old:Sad',
+  'old:Emotional'
 ];
 
 
@@ -68,11 +68,15 @@ var songs = [
     for (var i = 0; i < files.length; i += 2) {
       var name = files[i];
       var completeness = files[i + 1];
-      var classList = "projectLink";
+      // var classList = "projectLink";
+      var href = "prosjekt.html#" + name.toLowerCase();
       if (name.includes("f:")) {
         name = name.slice(2, name.length);
-        classList = "projectLink folder";
+        // classList = "projectLink folder";
+        href = "prosjekt.html#" + name.toLowerCase() + "+f";
       }
+      var newDiv = '<h5 class="description"><a href="' + href + '">' + name + '</a></h5>' +
+      '<div class="progress progress-line-primary"><div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="' + completeness + '" aria-valuemin="0" aria-valuemax="100" style="width: ' + completeness + '%;"><span class="sr-only">' + completeness + '% Complete</span></div></div>';
       if (completeness < lessThan && !islessThan) {
         islessThan = true;
         // TODO: styles in css file!!
@@ -80,15 +84,13 @@ var songs = [
         '<div id="hiddenList" class="hidden"></div>';
       } else if (completeness < lessThan) {
         container = document.getElementById("hiddenList");
-        container.innerHTML = container.innerHTML + '<h5 class="description"><a href="javascript:void(0)" class="' + classList + '">' + name + '</a></h5>' +
-        '<div class="progress progress-line-primary"><div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="' + completeness + '" aria-valuemin="0" aria-valuemax="100" style="width: ' + completeness + '%;"><span class="sr-only">' + completeness + '% Complete</span></div></div>';
+        container.innerHTML = container.innerHTML + newDiv;
       } else {
-        container.innerHTML = container.innerHTML + '<h5 class="description"><a href="javascript:void(0)" class="' + classList + '">' + name + '</a></h5>' +
-        '<div class="progress progress-line-primary"><div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="' + completeness + '" aria-valuemin="0" aria-valuemax="100" style="width: ' + completeness + '%;"><span class="sr-only">' + completeness + '% Complete</span></div></div>';
+        container.innerHTML = container.innerHTML + newDiv;
       }
     }
 
-    // music grid (31 songs)
+    // music grid (32 songs)
     var counter = 0;
     var row = 0;
     for (var j = 0; j < songs.length; j++) {
@@ -148,27 +150,27 @@ if (document.getElementById("fsBtn") !== null) {
 }
 
 
-var projectLinks = document.getElementsByClassName("projectLink");
-for (var i = 0; i < projectLinks.length; i++) {
-  projectLinks[i].addEventListener('click', openProject, false);
-}
-
-function openProject() {
-  // window.location.href = "prosjekt.html";
-  // TODO: create an iframe!!
-  var href;
-  if (this.classList.contains("folder")) {
-    href = "prosjekt/" + this.innerText;
-    window.location.href = "prosjekt.html" + "#" + this.innerText.toLowerCase() + "+f";
-  } else {
-    href = "prosjekt/" + this.innerText + ".html";
-    window.location.href = "prosjekt.html" + "#" + this.innerText.toLowerCase();
-  }
-  // setTimeout(function() {
-    // window.history.pushState(href, "test" + this.innerText, "./prosjekt.html#" + this.innerText);
-    // document.title = this.innerText;
-  // }, 1000);
-}
+// var projectLinks = document.getElementsByClassName("projectLink");
+// for (var i = 0; i < projectLinks.length; i++) {
+//   projectLinks[i].addEventListener('click', openProject, false);
+// }
+//
+// function openProject() {
+//   // window.location.href = "prosjekt.html";
+//   // TODO: create an iframe!!
+//   var href;
+//   if (this.classList.contains("folder")) {
+//     href = "prosjekt/" + this.innerText;
+//     window.location.href = "prosjekt.html" + "#" + this.innerText.toLowerCase() + "+f";
+//   } else {
+//     href = "prosjekt/" + this.innerText + ".html";
+//     window.location.href = "prosjekt.html" + "#" + this.innerText.toLowerCase();
+//   }
+//   // setTimeout(function() {
+//     // window.history.pushState(href, "test" + this.innerText, "./prosjekt.html#" + this.innerText);
+//     // document.title = this.innerText;
+//   // }, 1000);
+// }
 
 
 // function processAjaxData(response, urlPath) {
@@ -184,13 +186,17 @@ function openProject() {
 // };
 
 
-// audio:
+// MUSIC:
+
+// TODO: Add Old Garage Band Tracks
+// TODO: Add Album Titles..
+// TODO: Add Duration/Uploaded time to Display
 
 function playTrack(elem) {
   console.log(elem);
   var track = elem.closest(".cover-column").children[1].innerHTML;
   for (var i = 0; i < songs.length; i++) {
-    if (songs[i] == track) {
+    if (songs[i] == track || songs[i] == "old:" + track) {
       break;
     }
   }
@@ -208,6 +214,14 @@ var audio;
 function playSong(index) {
   // console.log(audio);
   var song = songs[index];
+  if (song.includes("old:")) {
+    song = song.slice(4, song.length);
+  }
+  console.log(song);
+  if (fullscreen) {
+    // TODO: Animate?
+    document.getElementById("BIGcover").src = "./assets/music/covers/" + song + ".jpg";
+  }
   var src = './assets/music/' + song + '.wav';
   new Audio(src).onerror = function() { src = './assets/music/' + song + '.mp3'; };
   console.log(new Audio(src).onerror);
@@ -228,7 +242,11 @@ function playSong(index) {
 }
 
 
+// TODO: MediaImage src can only be of http/https/data/blob scheme
+// TODO: image to data js...
+// TODO: imageData.js.....
 function mediaSession(song) {
+  // var imageData = "./assets/music/covers/" + song + ".jpg";
   // var imageData = toData("./assets/music/covers/" + song + ".jpg");
   // var img = document.createElement('img');
   // img.src = "./assets/music/covers/" + song + ".jpg";
@@ -236,25 +254,28 @@ function mediaSession(song) {
   // document.body.appendChild(img);
   // setTimeout(function () {
   //   var imageData = toData(img);
-    // img.remove();
-    // console.log(imageData);
-    if ('mediaSession' in navigator) {
-      navigator.mediaSession.metadata = new MediaMetadata({
-        title: song,
-        artist: "Vizzber",
-        // album: "Vizzber",
-        artwork: [{src: "./assets/music/covers/" + song + ".jpg"}] // TODO: <--------
-      });
-      // console.log("./assets/music/covers/" + song + ".jpg");
-      navigator.mediaSession.setActionHandler('play', pause);
-      navigator.mediaSession.setActionHandler('pause', pause);
-      navigator.mediaSession.setActionHandler('seekbackward', function() { audio.currentTime = audio.currentTime - 5; });
-      navigator.mediaSession.setActionHandler('seekforward', function() { audio.currentTime = audio.currentTime + 5; });
-      navigator.mediaSession.setActionHandler('previoustrack', function() { if (audio.currentTime < 3) { checkRepeat('back'); } else { audio.currentTime = 0; } });
-      navigator.mediaSession.setActionHandler('nexttrack', function() { checkRepeat(); });
-    }
+  // img.remove();
+  // console.log(imageData);
+  if ('mediaSession' in navigator) {
+    navigator.mediaSession.metadata = new MediaMetadata({
+      title: song,
+      artist: "Vizzber",
+      // album: "Vizzber",
+      // album: "Old Songs",
+      // album: "GarageBand",
+      artwork: [{src: imageData}] // TODO: <--------
+    });
+    // console.log("./assets/music/covers/" + song + ".jpg");
+    navigator.mediaSession.setActionHandler('play', pause);
+    navigator.mediaSession.setActionHandler('pause', pause);
+    navigator.mediaSession.setActionHandler('seekbackward', function() { audio.currentTime = audio.currentTime - 5; });
+    navigator.mediaSession.setActionHandler('seekforward', function() { audio.currentTime = audio.currentTime + 5; });
+    navigator.mediaSession.setActionHandler('previoustrack', function() { if (audio.currentTime < 3) { checkRepeat('back'); } else { audio.currentTime = 0; } });
+    navigator.mediaSession.setActionHandler('nexttrack', function() { checkRepeat(); });
+  }
   // }, 50);
 }
+
 
 // function encodeImageFileAsURL(element, callback) {
 //   console.log(element);
@@ -322,6 +343,7 @@ function mediaSession(song) {
 // });
 
 
+
 function audioEnded() {
   if (repeat == 'one') {
     audio.currentTime = 0;
@@ -333,9 +355,8 @@ function audioEnded() {
 }
 
 
-
 var mousedown = false;
-if (document.getElementById("trackSlider") !== undefined) {
+if (document.getElementById("trackSlider") !== null) {
   document.getElementById("trackSlider").addEventListener('mousedown', function(e) {
     mousedown = true;
     moveSlider(e);
@@ -366,7 +387,7 @@ function updateBar(song, duration) {
   updateTrackSlider("100%", "4px");
 }
 
-var repeat = false;
+var repeat = true;
 // var skipped = false;
 var interval;
 function startInterval() {
@@ -572,7 +593,8 @@ function pause() {
 }
 
 document.addEventListener('keydown', function(e) {
-  if (audio !== undefined) {
+  console.log(document.activeElement.tagName);
+  if (audio !== undefined && document.activeElement.tagName !== 'INPUT') {
     if (e.code == "Space" || e.key == 'k') {
       pause();
       e.preventDefault();
@@ -589,14 +611,18 @@ document.addEventListener('keydown', function(e) {
     } else if (e.key == "m") {
       if (audio.muted) {
         audio.muted = false;
+        document.getElementById("volumeBtn").innerHTML = "volume_up";
       } else {
         audio.muted = true;
+        document.getElementById("volumeBtn").innerHTML = "volume_off";
       }
     } else if (e.key == 'f') {
       if (fullscreen) toggleFullscreen('exit');
       else toggleFullscreen();
     }
     // volume by arrows
+  } else if (e.key == 'Escape') {
+    document.activeElement.blur();
   }
 });
 
@@ -616,7 +642,7 @@ function shuffle(a) {
 function getSongIndex() {
   var song = document.getElementById("trackName").innerHTML;
   for (var i = 0; i < songs.length; i++) {
-    if (songs[i] == song) {
+    if (songs[i] == song || songs[i] == "old:" + song) {
       break;
     }
   }
@@ -661,19 +687,19 @@ function checkRepeat(back) {
 // prosjekt.html
 (function onLoad() {
   var href = window.location.href;
-  var hash = window.location.hash;
+  // var hash = window.location.hash;
   if (href.includes("prosjekt") && href.includes("#")) {
     var pos = href.indexOf("#");
-    var type;
+    var type = href.slice(pos + 1, href.length);
+    var ending = ".html";
     if (href.includes("+f")) {
       type = href.slice(pos + 1, href.length - 2);
-      document.getElementById("iframe").src = "./prosjekter/" + type + "/index.html";
-      document.getElementById("project_path").innerText = "src: /prosjekter/" + type + "/index.html"; // TODO: convert url chars (%20) to string
-    } else {
-      type = href.slice(pos + 1, href.length);
-      document.getElementById("iframe").src = "./prosjekter/" + type + ".html";
-      document.getElementById("project_path").innerText = "src: /prosjekter/" + type + ".html";
+      ending = "/index.html";
     }
+    document.getElementById("iframe").src = "./prosjekter/" + type + ending;
+    document.getElementById("project_path").innerText = "src: /prosjekter/" + decodeURI(type) + ending;
     document.title = type;
   }
 })();
+
+// TODO: REMOVE IFRAME LOG
