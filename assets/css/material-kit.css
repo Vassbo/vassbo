@@ -32,7 +32,7 @@ html {
                                   supported by Chrome, Opera and Firefox */
 }
 .hidden {
-  display: none;
+  display: none !important;
 }
 #iframe {
   /* TODO: create a better and bigger iframe */
@@ -60,6 +60,30 @@ html {
 }
 #showLessThanBtn:not(.btn-link) {
   background: var(--primary-color);
+}
+
+#fullScreen {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 999;
+}
+#fsBtn {
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 5px;
+  background: var(--primary-color); /* #2c60a4 */
+  color: white;
+  height: 40px;
+  width: 40px;
+  border: none;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+#fsBtn i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 /* .btn.btn-primary:focus, .btn.btn-primary.focus, .btn.btn-primary:hover {
     color: #fff;
@@ -92,6 +116,22 @@ html {
 }
 .cover:hover {
   box-shadow: 0 5px 15px -8px rgba(0, 0, 0, 0.24), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+  filter: brightness(0.9);
+}
+
+
+.navbar.music-bar {
+  position: fixed;
+  bottom: 0;
+  margin: 0;
+  z-index: 1099;
+  width: 100vw;
+}
+.navbar.music-bar .cover {
+  border-radius: 2px !important;
+  height: 60px !important;
+  width: 60px;
+  margin-right: 10px;
 }
 
 /*********************************************/

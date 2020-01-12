@@ -26,6 +26,7 @@ var islessThan = false;
 
 
 var songs = [
+  'Breeze',
   'Valley',
   'United',
   'Hopes',
@@ -51,12 +52,12 @@ var songs = [
   'Rising (feat. Flåklypa)',
   'Gravity',
   'Dreams',
-  'Atmosphere',
-  'old:Live',
-  'old:Hope',
-  'old:Happy',
-  'old:Sad',
-  'old:Emotional'
+  'Atmosphere'
+  // 'old:Live',
+  // 'old:Hope',
+  // 'old:Happy',
+  // 'old:Sad',
+  // 'old:Emotional'
 ];
 
 
@@ -114,8 +115,8 @@ var songs = [
       //   src = "./assets/img/faces/avatar.jpg";
       //   console.log(1);
       // }
-      songs_container.innerHTML = songs_container.innerHTML + '<div class="' + rowClassList + '" onclick="playSong(' + j + ')">' +
-      '<img src="' + src + '" alt="Cover for ' + song + '" class="rounded img-fluid hoverZoomLink cover">' +
+      songs_container.innerHTML = songs_container.innerHTML + '<div class="' + rowClassList + '">' +
+      '<img src="' + src + '" alt="Cover for ' + song + '" class="rounded img-fluid hoverZoomLink cover" onclick="playTrack(this)">' +
       '<h4>' + song + '</h4>' +
       '</div>';
       if (counter == 3) {
@@ -137,6 +138,13 @@ function updateSrc(src) { // iframe: onLoad="updateSrc(this.contentWindow.locati
   // console.log(src);
   // console.log(document.getElementById("iframe").src);
   // document.getElementById("project_path").innerText = src;
+}
+
+// fullscreen
+if (document.getElementById("fsBtn") !== null) {
+  document.getElementById("fsBtn").addEventListener('click', function() {
+    document.getElementById("iframe").requestFullscreen();
+  });
 }
 
 
@@ -176,12 +184,33 @@ function openProject() {
 // };
 
 
+// audio:
+
+function playTrack(elem) {
+  console.log(elem);
+  var track = elem.closest(".cover-column").children[1].innerHTML;
+  for (var i = 0; i < songs.length; i++) {
+    if (songs[i] == track) {
+      break;
+    }
+  }
+  playSong(i);
+}
+
+function closeAudio() {
+  document.getElementById("trackPlayNav").classList.add("hidden");
+  clearInterval(interval);
+  audio.src = undefined;
+  audio = undefined;
+}
+
 var audio;
 function playSong(index) {
   // console.log(audio);
   var song = songs[index];
   var src = './assets/music/' + song + '.wav';
   new Audio(src).onerror = function() { src = './assets/music/' + song + '.mp3'; };
+  console.log(new Audio(src).onerror);
   setTimeout(function () {
     if (audio !== undefined) {
       audio.src = src;
@@ -189,8 +218,429 @@ function playSong(index) {
       audio = new Audio(src);
       audio.id = "audio";
     }
+    // audio.currentTime = 0;
     audio.play();
-  }, 10);
+    // skipped = false;
+    audio.addEventListener('ended', audioEnded);
+    mediaSession(song);
+  }, 80);
+  updateBar(song);
+}
+
+
+function mediaSession(song) {
+  // var imageData = toData("./assets/music/covers/" + song + ".jpg");
+  // var img = document.createElement('img');
+  // img.src = "./assets/music/covers/" + song + ".jpg";
+  // img.setAttribute('crossorigin', 'anonymous');
+  // document.body.appendChild(img);
+  // setTimeout(function () {
+  //   var imageData = toData(img);
+    // img.remove();
+    // console.log(imageData);
+    if ('mediaSession' in navigator) {
+      navigator.mediaSession.metadata = new MediaMetadata({
+        title: song,
+        artist: "Vizzber",
+        // album: "Vizzber",
+        artwork: [{src: "./assets/music/covers/" + song + ".jpg"}] // TODO: <--------
+      });
+      // console.log("./assets/music/covers/" + song + ".jpg");
+      navigator.mediaSession.setActionHandler('play', pause);
+      navigator.mediaSession.setActionHandler('pause', pause);
+      navigator.mediaSession.setActionHandler('seekbackward', function() { audio.currentTime = audio.currentTime - 5; });
+      navigator.mediaSession.setActionHandler('seekforward', function() { audio.currentTime = audio.currentTime + 5; });
+      navigator.mediaSession.setActionHandler('previoustrack', function() { if (audio.currentTime < 3) { checkRepeat('back'); } else { audio.currentTime = 0; } });
+      navigator.mediaSession.setActionHandler('nexttrack', function() { checkRepeat(); });
+    }
+  // }, 50);
+}
+
+// function encodeImageFileAsURL(element, callback) {
+//   console.log(element);
+//   var file = element.files[0];
+//   var reader = new FileReader();
+//   reader.onloadend = function() {
+//     // console.log('RESULT', reader.result);
+//     callback(reader.result);
+//   };
+//   reader.readAsDataURL(file);
+// }
+//
+// function toData(img) {
+//   var c = document.createElement('canvas');
+//   // var img = document.getElementById('Img1');
+//   // c.height = img.naturalHeight;
+//   // c.width = img.naturalWidth;
+//   // setTimeout(function () {
+//   //   console.log(img.clientHeight);
+//   //   console.log(img.clientWidth);
+//   //   console.log(img.offsetHeight);
+//   //   console.log(img.offsetWidth);
+//   //   console.log(img.naturalHeight);
+//   //   console.log(img.naturalWidth);
+//   //   console.log(img.height);
+//   //   console.log(img.width);
+//   // }, 10);
+//   // c.height = 720 + "px";
+//   // c.width = 1280 + "px";
+//   c.height = 720;
+//   c.width = 1280;
+//   var ctx = c.getContext('2d');
+//
+//   console.log(img);
+//
+//   // setTimeout(function () {
+//   //   ctx.drawImage(img, 0, 0, c.width, c.height);
+//   //   console.log(c.toDataURL());
+//   // }, 1000);
+//
+//   ctx.drawImage(img, 0, 0, c.width, c.height);
+//   var base64String = c.toDataURL();
+//   // console.log(ctx);
+//   // console.log(c);
+//   document.body.appendChild(c);
+//   return base64String;
+// }
+//
+// function toDataURL(url, callback) {
+//   var xhr = new XMLHttpRequest();
+//   xhr.onload = function() {
+//     var reader = new FileReader();
+//     reader.onloadend = function() {
+//       callback(reader.result);
+//     };
+//     reader.readAsDataURL(xhr.response);
+//   };
+//   xhr.open('GET', url);
+//   xhr.responseType = 'blob';
+//   xhr.send();
+// }
+
+// toDataURL('https://www.gravatar.com/avatar/d50c83cc0c6523b4d3f6085295c953e0', function(dataUrl) {
+//   console.log('RESULT:', dataUrl);
+// });
+
+
+function audioEnded() {
+  if (repeat == 'one') {
+    audio.currentTime = 0;
+    audio.play();
+  } else {
+    // skipped = true;
+    checkRepeat();
+  }
+}
+
+
+
+var mousedown = false;
+if (document.getElementById("trackSlider") !== undefined) {
+  document.getElementById("trackSlider").addEventListener('mousedown', function(e) {
+    mousedown = true;
+    moveSlider(e);
+  });
+}
+document.addEventListener('mouseup', function(e) {
+  if (mousedown) {
+    audio.currentTime = currentTime;
+    mousedown = false;
+
+    if (document.getElementById("play_pause").innerHTML == "play_arrow") {
+      document.getElementById("play_pause").innerHTML = 'pause';
+      audio.play();
+    }
+  }
+});
+document.addEventListener('mousemove', function(e) {
+  if (mousedown) {
+    moveSlider(e);
+  }
+});
+function updateBar(song, duration) {
+  document.getElementById("trackPlayNav").classList.remove("hidden");
+  document.getElementById("trackCover").src = './assets/music/covers/' + song + '.jpg';
+  document.getElementById("trackName").innerText = song;
+  document.getElementById("play_pause").innerHTML = 'pause';
+  if (audio == undefined) startInterval();
+  updateTrackSlider("100%", "4px");
+}
+
+var repeat = false;
+// var skipped = false;
+var interval;
+function startInterval() {
+  var interval = setInterval(function () {
+    if (audio !== undefined) {
+      if (document.getElementById("trackDuration").innerText !== getTime(audio.duration)) {
+        document.getElementById("trackDuration").innerText = getTime(audio.duration);
+      }
+      if (mousedown == false) {
+        document.getElementById("trackTime").innerText = getTime(audio.currentTime);
+        var sliderWidth = document.getElementById("trackSlider").offsetWidth;
+        var percentage = audio.currentTime / audio.duration;
+        updateTrackSlider(sliderWidth - sliderWidth * percentage + "px", sliderWidth * percentage + 4 + "px");
+      }
+      // if (audio.duration == audio.currentTime && !skipped) {
+      //   // check repeat, and shuffle
+      //   // repeat
+      //   if (repeat == 'one') {
+      //     audio.currentTime = 0;
+      //     audio.play();
+      //   } else {
+      //     skipped = true;
+      //     checkRepeat();
+      //   }
+      // }
+    }
+  }, 50);
+}
+
+
+
+var currentTime = 0;
+function moveSlider(e) {
+  var slider = document.getElementById("trackSlider");
+  var sliderLeft = slider.offsetLeft;
+  var sliderWidth = slider.offsetWidth;
+  var left = e.clientX - sliderLeft;
+  var percentage = left / sliderWidth;
+  if (left > 0 && left < sliderWidth) {
+    updateTrackSlider((sliderWidth - left) + "px", left + 4 + "px");
+  } else if (left < sliderWidth) {
+    updateTrackSlider(sliderWidth - 1 + "px", "4px");
+    percentage = 0;
+  } else {
+    updateTrackSlider("0px", sliderWidth + 4 + "px");
+    percentage = 1;
+  }
+  currentTime = audio.duration * percentage;
+  console.log(currentTime);
+  document.getElementById("trackTime").innerText = getTime(currentTime);
+}
+
+function updateTrackSlider(right, left) {
+  var slider = document.getElementById("trackSlider");
+  var sliderChild = slider.children[0];
+  sliderChild.children[0].style.right = right;
+  sliderChild.children[1].style.left = left;
+}
+
+function getTime(time) {
+   var minutes = "0" + Math.floor(time / 60);
+   var seconds = "0" + (Math.floor(time) - minutes * 60);
+   var dur = minutes.substr(-1) + ":" + seconds.substr(-2);
+   if (isNaN(time)) dur = "0:00";
+
+   return dur;
+}
+
+
+
+if (document.getElementsByClassName("track_action")[0] !== undefined) {
+  var query = document.querySelectorAll(".track_action");
+  for (var i = 0; i < query.length; i++) {
+    query[i].addEventListener('click', trackAction);
+  }
+}
+
+var defaultSongs = null;
+function trackAction() {
+  var val = this.getElementsByClassName("material-icons")[0];
+  switch (val.innerHTML) {
+    case 'play_arrow':
+      val.innerHTML = 'pause';
+      audio.play();
+      break;
+    case 'pause':
+      val.innerHTML = 'play_arrow';
+      audio.pause();
+      break;
+    case 'skip_previous':
+      if (audio.currentTime < 3) {
+        checkRepeat('back');
+      } else {
+        audio.currentTime = 0;
+      }
+      break;
+    case 'skip_next':
+      checkRepeat();
+      break;
+    case 'repeat':
+      if (!repeat) {
+        repeat = true;
+      } else {
+        val.innerHTML = 'repeat_one';
+        repeat = 'one';
+      }
+      val.style.color = "var(--primary-color)";
+      break;
+    case 'repeat_one':
+      repeat = false;
+      val.innerHTML = 'repeat';
+      val.style.color = null;
+      break;
+    case 'shuffle':
+      if (defaultSongs == null) {
+        defaultSongs = JSON.stringify(songs);
+        console.log(defaultSongs);
+        val.style.color = "var(--primary-color)";
+        songs = shuffle(songs);
+      } else {
+        songs = JSON.parse(defaultSongs);
+        defaultSongs = null;
+        val.style.color = null;
+      }
+      break;
+    case 'volume_up':
+      val.innerHTML = 'volume_off';
+      audio.muted = true;
+      break;
+    case 'volume_off':
+      val.innerHTML = 'volume_up';
+      audio.muted = false;
+      break;
+    case 'fullscreen':
+      toggleFullscreen();
+      break;
+    case 'fullscreen_exit':
+      toggleFullscreen('exit');
+      break;
+    default:
+      alert(val.innerHTML);
+  }
+}
+
+
+// Fullscreen
+document.addEventListener('fullscreenchange', exitHandler, false);
+function exitHandler() {
+  var fullscreenElement = document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement;
+  if (fullscreenElement == null && fullscreen == true) {
+    toggleFullscreen('exit');
+  }
+}
+
+var fullscreen = false;
+var scrollY = 0;
+function toggleFullscreen(exit) {
+  if (exit == 'exit' && fullscreen) {
+    fullscreen = false;
+    document.body.style.overflow = null;
+    document.getElementById("trackPlayNav").style.removeProperty('background-color');
+    document.getElementById("trackPlayNav").style.color = null;
+    document.getElementById("trackPlayNav").style.backdropFilter = null;
+    document.getElementById("trackCover").classList.toggle("hidden");
+    document.getElementById("fullscreenBtn").innerHTML = 'fullscreen';
+    document.getElementById("trackTime").style.color = 'var(--primary-color)';
+    document.exitFullscreen();
+    setTimeout(function () {
+      document.documentElement.style.scrollBehavior = 'unset';
+      window.scrollTo(0, scrollY);
+      document.documentElement.style.scrollBehavior = 'smooth';
+    }, 30);
+  } else {
+    fullscreen = true;
+    document.body.style.overflow = "hidden";
+    var song = document.getElementById("trackName").innerHTML;
+    document.getElementById("BIGcover").src = "./assets/music/covers/" + song + ".jpg";
+    document.getElementById("trackPlayNav").style.setProperty('background-color', 'rgba(255, 255, 255, 0.4)', 'important');
+    document.getElementById("trackPlayNav").style.backdropFilter = 'blur(6px)';
+    document.getElementById("trackPlayNav").style.color = "white";
+    document.getElementById("trackCover").classList.toggle("hidden");
+    document.getElementById("fullscreenBtn").innerHTML = 'fullscreen_exit';
+    document.getElementById("trackTime").style.color = 'white';
+    scrollY = window.pageYOffset;
+    console.log(scrollY);
+    setTimeout(function () {
+      document.body.requestFullscreen();
+    }, 100);
+  }
+  document.getElementById("BIGcover").classList.toggle("hidden");
+}
+
+
+function pause() {
+  var btn = document.getElementById("play_pause");
+  if (btn.innerHTML =='play_arrow') {
+    btn.innerHTML = 'pause';
+    audio.play();
+  } else {
+    btn.innerHTML = 'play_arrow';
+    audio.pause();
+  }
+}
+
+document.addEventListener('keydown', function(e) {
+  if (audio !== undefined) {
+    if (e.code == "Space" || e.key == 'k') {
+      pause();
+      e.preventDefault();
+    } else if (e.key == 'Escape') {
+      closeAudio();
+    } else if (e.key == "ArrowRight") {
+      audio.currentTime = audio.currentTime + 5;
+    } else if (e.key == "ArrowLeft") {
+      audio.currentTime = audio.currentTime - 5;
+    }else if (e.key == "l") {
+      audio.currentTime = audio.currentTime + 10;
+    } else if (e.key == "j") {
+      audio.currentTime = audio.currentTime - 10;
+    } else if (e.key == "m") {
+      if (audio.muted) {
+        audio.muted = false;
+      } else {
+        audio.muted = true;
+      }
+    } else if (e.key == 'f') {
+      if (fullscreen) toggleFullscreen('exit');
+      else toggleFullscreen();
+    }
+    // volume by arrows
+  }
+});
+
+// TODO: volume slider
+
+function shuffle(a) {
+  var j, x, i;
+  for (i = a.length - 1; i > 0; i--) {
+      j = Math.floor(Math.random() * (i + 1));
+      x = a[i];
+      a[i] = a[j];
+      a[j] = x;
+  }
+  return a;
+}
+
+function getSongIndex() {
+  var song = document.getElementById("trackName").innerHTML;
+  for (var i = 0; i < songs.length; i++) {
+    if (songs[i] == song) {
+      break;
+    }
+  }
+  return i;
+}
+
+
+
+function checkRepeat(back) {
+  var index = getSongIndex() + 1;
+  if (back == 'back') {
+    index = getSongIndex() - 1;
+  }
+  if (repeat === true) {
+    if (index < 0) index = songs.length - 1;
+    else if (index == songs.length) index = 0;
+    playSong(index);
+  } else {
+    if (index < songs.length && index >= 0) {
+      playSong(index);
+    } else {
+      document.getElementById("play_pause").innerHTML = 'play_arrow';
+    }
+  }
 }
 
 // TODO: make an audio player
@@ -200,7 +650,8 @@ function playSong(index) {
 // myaudio.duration; - Returns the length of the music track.
 // myaudio.currentTime = 0; - This will rewind the audio to the beginning.
 // myaudio.loop = true; - This will make the audio track loop.
-// myaudio.muted = true; - This will mute the track
+// myaudio.muted = true; - This will mute the track.
+// myaudio.volume = 0.2; - This will set a custom volume.
 
 // If you want a function to be called once the audio has finished playing then you can use 'myaudio.addEventListener('ended',myfunc)' - This will call 'myfunc()' once the audio has finished.
 

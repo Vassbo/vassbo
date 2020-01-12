@@ -23,8 +23,8 @@
   <nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg" color-on-scroll="100" id="sectionsNav">
     <div class="container">
       <div class="navbar-translate">
-        <a class="navbar-brand" href="./">
-          Hjemmeside </a>
+        <a class="navbar-brand" href="./index.html">
+          Hjem </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="sr-only">Toggle navigation</span>
           <span class="navbar-toggler-icon"></span>
@@ -70,7 +70,7 @@
       </div>
     </div>
   </nav>
-  <div class="page-header header-filter" data-parallax="true" style="background-image: url('assets/img/city-profile.jpg');"></div>
+  <div class="page-header header-filter" data-parallax="true" style="background-image: url('assets/img/city-profile.jpg'); height: 160px;"></div>
   <div class="main main-raised">
     <!-- <div class="profile-content"> -->
       <div id="iframeContainer" class="container">
@@ -81,38 +81,28 @@
       </div>
     <!-- </div> -->
   </div>
-  <footer class="footer footer-default">
+  <div id="fullScreen">
+    <button id="fsBtn" class="btn btn-primary btn-fab btn-round">
+      <i class="material-icons">fullscreen</i>
+    </button>
+  </div>
+  <footer class="footer footer-default" >
     <div class="container">
       <nav class="float-left">
         <ul>
           <li>
-            <a href="https://www.creative-tim.com">
-              Creative Tim
-            </a>
-          </li>
-          <li>
-            <a href="https://creative-tim.com/presentation">
-              About Us
-            </a>
-          </li>
-          <li>
-            <a href="http://blog.creative-tim.com">
-              Blog
-            </a>
-          </li>
-          <li>
-            <a href="https://www.creative-tim.com/license">
-              Licenses
+            <a href="https://demos.creative-tim.com/material-kit/index.html">
+                Material Kit
             </a>
           </li>
         </ul>
       </nav>
       <div class="copyright float-right">
-        &copy;
-        <script>
-          document.write(new Date().getFullYear())
-        </script>, made with <i class="material-icons">favorite</i> by
-        <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> for a better web.
+          &copy;
+          <script>
+              document.write(new Date().getFullYear())
+          </script>, laget med <i class="material-icons">favorite</i> av
+          <a href="https://www.creative-tim.com/" target="blank">Creative Tim</a> for et bedre nett.
       </div>
     </div>
   </footer>
