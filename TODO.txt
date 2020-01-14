@@ -4,3 +4,6 @@
 - mp3 files not working on website
 - Music player...: https://codepen.io/nicholaspetersen/pen/yyVYMY
 - SoloLearn
+
+
+- change script links in .html files
