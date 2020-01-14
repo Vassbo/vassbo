@@ -18,6 +18,16 @@
 /* my: */
 :root {
   --primary-color: #d15858; /* #9c27b0 */
+  --primary-color--hover: #b04c4c; /* #89229b */
+  --primary-color--6: rgba(209, 88, 88, 0.6); /* rgba(156, 39, 176, 0.6) */
+  --primary-color--14: rgba(209, 88, 88, 0.14);
+  --primary-color--2: rgba(209, 88, 88, 0.2);
+  --primary-color--12: rgba(209, 88, 88, 0.12);
+  --primary-color--4: rgba(209, 88, 88, 0.4);
+  --primary-color--42: rgba(209, 88, 88, 0.42);
+  --primary-color--46: rgba(209, 88, 88, 0.46);
+  --primary-color--7: rgba(209, 88, 88, 0.7);
+  --primary-color--1: rgba(209, 88, 88, 0.1);
 }
 html {
   scroll-behavior: smooth;
@@ -141,6 +151,27 @@ html {
 }
 .track_action:hover {
   background: rgba(0, 0, 0, 0.05);
+}
+
+.cv {
+  text-align: left;
+  width: 100%;
+}
+.cv td {
+  padding-left: 0;
+}
+.cv th:first-child {
+  text-align: right;
+  width: 50%;
+}
+.cv th:first-child, .cv td:first-child {
+  padding-right: 12px;
+}
+.cv th:last-child, .cv td:last-child {
+  padding-left: 12px;
+}
+.cv th p.cvp, .cv td p.cvp {
+  margin-bottom: 0px;
 }
 
 /*********************************************/
@@ -9030,7 +9061,7 @@ button:focus {
   color: #fff;
   background-color: var(--primary-color);
   border-color: var(--primary-color);
-  box-shadow: 0 2px 2px 0 rgba(156, 39, 176, 0.14), 0 3px 1px -2px rgba(156, 39, 176, 0.2), 0 1px 5px 0 rgba(156, 39, 176, 0.12);
+  box-shadow: 0 2px 2px 0 var(--primary-color--14), 0 3px 1px -2px var(--primary-color--2), 0 1px 5px 0 var(--primary-color--12);
 }
 
 .btn.btn-primary:hover {
@@ -9054,7 +9085,7 @@ button:focus {
   color: #fff;
   background-color: #9124a3;
   border-color: #701c7e;
-  box-shadow: 0 2px 2px 0 rgba(156, 39, 176, 0.14), 0 3px 1px -2px rgba(156, 39, 176, 0.2), 0 1px 5px 0 rgba(156, 39, 176, 0.12);
+  box-shadow: 0 2px 2px 0 var(--primary-color--14), 0 3px 1px -2px var(--primary-color--2), 0 1px 5px 0 var(--primary-color--12);
 }
 
 .btn.btn-primary:active:hover,
@@ -9100,7 +9131,7 @@ button:focus {
 .btn.btn-primary:focus,
 .btn.btn-primary:active,
 .btn.btn-primary:hover {
-  box-shadow: 0 14px 26px -12px rgba(156, 39, 176, 0.42), 0 4px 23px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(156, 39, 176, 0.2);
+  box-shadow: 0 14px 26px -12px var(--primary-color--42), 0 4px 23px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px var(--primary-color--2);
 }
 
 .btn.btn-primary.btn-link {
@@ -11078,7 +11109,7 @@ a {
 
 a:hover,
 a:focus {
-  color: #89229b;
+  color: var(--primary-color--hover);
   text-decoration: none;
 }
 
@@ -14235,12 +14266,12 @@ textarea {
 .navbar.bg-primary {
   color: #fff;
   background-color: var(--primary-color) !important;
-  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 12px -5px rgba(156, 39, 176, 0.46);
+  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 12px -5px var(--primary-color--46);
 }
 
 .navbar.bg-primary .dropdown-item:hover,
 .navbar.bg-primary .dropdown-item:focus {
-  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(156, 39, 176, 0.4);
+  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px var(--primary-color--4);
   background-color: var(--primary-color);
   color: #fff;
 }
@@ -14404,7 +14435,7 @@ textarea {
 
 .badge-primary[href]:hover,
 .badge-primary[href]:focus {
-  background-color: #89229b;
+  background-color: var(--primary-color--hover);
 }
 
 .badge-info[href]:hover,
@@ -14607,7 +14638,7 @@ textarea {
   background-color: var(--primary-color);
   border-color: var(--primary-color);
   color: #fff;
-  box-shadow: 0 4px 5px 0 rgba(156, 39, 176, 0.14), 0 1px 10px 0 rgba(156, 39, 176, 0.12), 0 2px 4px -1px rgba(156, 39, 176, 0.2);
+  box-shadow: 0 4px 5px 0 var(--primary-color--14), 0 1px 10px 0 var(--primary-color--12), 0 2px 4px -1px var(--primary-color--2);
 }
 
 .pagination.pagination-info>.page-item.active>a,
@@ -14686,7 +14717,7 @@ textarea {
 .nav-pills .nav-item .nav-link.active {
   color: #fff;
   background-color: var(--primary-color);
-  box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.2), 0 13px 24px -11px rgba(156, 39, 176, 0.6);
+  box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.2), 0 13px 24px -11px var(--primary-color--6);
 }
 
 .nav-pills .nav-item i {
@@ -15435,7 +15466,7 @@ h2.title {
 .dropdown-menu a:hover,
 .dropdown-menu a:focus,
 .dropdown-menu a:active {
-  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(156, 39, 176, 0.4);
+  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px var(--primary-color--4);
   background-color: var(--primary-color);
   color: #FFFFFF;
 }
@@ -16055,7 +16086,7 @@ h2.title {
 }
 
 .progress.progress-line-primary {
-  background: rgba(156, 39, 176, 0.2);
+  background: var(--primary-color--2);
 }
 
 .progress.progress-line-info {
@@ -16157,7 +16188,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 }
 
 .togglebutton label input[type=checkbox]:checked+.toggle {
-  background-color: rgba(156, 39, 176, 0.7);
+  background-color: var(--primary-color--7);
 }
 
 .togglebutton label input[type=checkbox]:checked+.toggle:after {
@@ -16165,7 +16196,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 }
 
 .togglebutton label input[type=checkbox]:checked+.toggle:active:after {
-  box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.4), 0 0 0 15px rgba(156, 39, 176, 0.1);
+  box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.4), 0 0 0 15px var(--primary-color--1);
 }
 
 .ripple {
@@ -16587,7 +16618,7 @@ footer .pull-center {
 }
 
 .card .card-header-primary {
-  box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.2), 0 13px 24px -11px rgba(156, 39, 176, 0.6);
+  box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.2), 0 13px 24px -11px var(--primary-color--6);
 }
 
 .card .card-header-danger {
@@ -17141,7 +17172,7 @@ footer .pull-center {
 .bootstrap-datetimepicker-widget table td.active:hover>div {
   background-color: var(--primary-color);
   color: #fff;
-  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(156, 39, 176, 0.4);
+  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px var(--primary-color--4);
 }
 
 .bootstrap-datetimepicker-widget table td.active.today:before>div {
