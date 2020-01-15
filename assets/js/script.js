@@ -74,7 +74,7 @@ var songs = [
         url = "prosjekt.html#" + name.toLowerCase() + "+f";
       }
       var newDiv = '<h5 class="description"><a href="' + url + '">' + name + '</a></h5>' +
-      '<div class="progress progress-line-primary"><div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="' + completeness + '" aria-valuemin="0" aria-valuemax="100" style="width: ' + completeness + '%;"><span class="sr-only">' + completeness + '% Complete</span></div></div>';
+      '<div class="progress progress-line-primary"><div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="' + completeness + '" aria-valuemin="0" aria-valuemax="100" style="width: ' + completeness + '%;"><span class="sr-only" style="display:none;">' + completeness + '% Complete</span></div></div>';
       if (completeness < lessThan && !islessThan) {
         islessThan = true;
         newDiv = '<div class="text-center"><button id="showLessThanBtn" class="btn btn-primary btn-link" onclick="showLessThan();">Vis flere prosjekter<!--<br>--> <em>(under ' + lessThan + '% fullført)</em><div class="ripple-container"></div></button></div>' +

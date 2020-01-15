@@ -1,7 +1,6 @@
-- upload music, html repository on github
+- upload music/html repository on github
 - Custom logo?
 - music loading indicator
-- mp3 files not working on website
 - Music player...: https://codepen.io/nicholaspetersen/pen/yyVYMY
 - SoloLearn
 
