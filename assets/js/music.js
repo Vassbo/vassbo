@@ -18,26 +18,23 @@ function playTrack(index) {
   document.getElementById("play_pause").innerHTML = 'pause';
   updateTrackSlider("100%", "4px");
 
+  // check if it is wav or mp3
   var src = './assets/music/' + song + '.wav';
-  new Audio(src).onerror = function() { src = './assets/music/' + song + '.mp3'; };
-  setTimeout(function () {
-    if (audio == undefined) {
-      audio = new Audio(src);
-      audio.id = "audio";
-    } else {
-      audio.src = src;
+  var testAudio = new Audio(src);
+  var ok = false;
+  testAudio.addEventListener('canplaythrough', function() { ok = true; }, {once: true});
+  testAudio.onerror = function() {
+    src = './assets/music/' + song + '.mp3';
+    ok = true;
+  };
+
+  var loadtrack = setInterval(function() {
+    if (ok) {
+      clearInterval(loadtrack);
+      ready(src, song);
+      // audio.addEventListener('canplaythrough', ready, {once: true});
     }
-    console.log(song);
-    console.log(audio.currentTime);
-    // audio.currentTime = 0;
-    audio.play();
-    audio.addEventListener('ended', function() {
-      // audio.currentTime = 0;
-      if (repeat == 'one') { audio.currentTime = 0; audio.play(); }
-      else checkRepeat();
-    });
-    mediaSession(song);
-  }, 80);
+  }, 20);
 
   var interval = setInterval(function () {
     if (audio !== undefined) {
@@ -55,34 +52,39 @@ function playTrack(index) {
 }
 
 
-// TODO: MediaImage src can only be of http/https/data/blob scheme
-// TODO: image to data js...
+
+function ready(src, song) {
+  if (audio == undefined) {
+    audio = new Audio(src);
+    audio.id = "audio";
+    audio.removeEventListener('ended', ended);
+    audio.addEventListener('ended', ended);
+  } else {
+    audio.src = src;
+  }
+  audio.play();
+  mediaSession(song);
+}
+
+function ended() {
+  if (repeat == 'one') { audio.currentTime = 0; audio.play(); }
+  else checkRepeat();
+}
+
+
+
 function mediaSession(song) {
-  // var imageData = "./assets/music/covers/" + song + ".jpg";
-  // var imageData = toData("./assets/music/covers/" + song + ".jpg");
-  // var img = document.createElement('img');
-  // img.src = "./assets/music/covers/" + song + ".jpg";
-  // img.setAttribute('crossorigin', 'anonymous');
-  // document.body.appendChild(img);
-  //   var imageData = toData(img);
-  // img.remove();
-  // console.log(imageData);
-
-
-  // var imageData = "data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=";
-  var album = "Vizzber";
-  // TODO: Album VVV
-  // if (song == '') album = 'GarageBand';
-  // if (song == '') album = 'Old Songs';
+  var album = "Dreams";
+  if (song == 'Live' || song == 'hope' || song == 'happy' || song == 'sad' || song == 'emotional') album = 'Old Songs';
+  if (song == 'musicaly' || song == 'salmonia') album = 'GarageBand';
   if ('mediaSession' in navigator) {
     navigator.mediaSession.metadata = new MediaMetadata({
       title: song,
       artist: "Vizzber",
+      album: album,
       // https://kristoffer.netlify.com/assets/music/covers/
-      artwork: [{src: '/assets/music/covers/' + song + '.jpg', sizes: '192x192', type: 'image/jpg'}] // TODO: <--------
+      artwork: [{src: '/assets/music/covers/' + song + '.jpg', sizes: '192x192', type: 'image/jpg'}]
     });
-    console.log(navigator);
-    console.log(navigator.mediaSession);
     navigator.mediaSession.setActionHandler('play', pause);
     navigator.mediaSession.setActionHandler('pause', pause);
     navigator.mediaSession.setActionHandler('seekbackward', function() { audio.currentTime = audio.currentTime - 5; });
@@ -91,74 +93,6 @@ function mediaSession(song) {
     navigator.mediaSession.setActionHandler('nexttrack', checkRepeat);
   }
 }
-
-
-// function encodeImageFileAsURL(element, callback) {
-//   console.log(element);
-//   var file = element.files[0];
-//   var reader = new FileReader();
-//   reader.onloadend = function() {
-//     // console.log('RESULT', reader.result);
-//     callback(reader.result);
-//   };
-//   reader.readAsDataURL(file);
-// }
-//
-// function toData(img) {
-//   var c = document.createElement('canvas');
-//   // var img = document.getElementById('Img1');
-//   // c.height = img.naturalHeight;
-//   // c.width = img.naturalWidth;
-//   // setTimeout(function () {
-//   //   console.log(img.clientHeight);
-//   //   console.log(img.clientWidth);
-//   //   console.log(img.offsetHeight);
-//   //   console.log(img.offsetWidth);
-//   //   console.log(img.naturalHeight);
-//   //   console.log(img.naturalWidth);
-//   //   console.log(img.height);
-//   //   console.log(img.width);
-//   // }, 10);
-//   // c.height = 720 + "px";
-//   // c.width = 1280 + "px";
-//   c.height = 720;
-//   c.width = 1280;
-//   var ctx = c.getContext('2d');
-//
-//   console.log(img);
-//
-//   // setTimeout(function () {
-//   //   ctx.drawImage(img, 0, 0, c.width, c.height);
-//   //   console.log(c.toDataURL());
-//   // }, 1000);
-//
-//   ctx.drawImage(img, 0, 0, c.width, c.height);
-//   var base64String = c.toDataURL();
-//   // console.log(ctx);
-//   // console.log(c);
-//   document.body.appendChild(c);
-//   return base64String;
-// }
-//
-// function toDataURL(url, callback) {
-//   var xhr = new XMLHttpRequest();
-//   xhr.onload = function() {
-//     var reader = new FileReader();
-//     reader.onloadend = function() {
-//       callback(reader.result);
-//     };
-//     reader.readAsDataURL(xhr.response);
-//   };
-//   xhr.open('GET', url);
-//   xhr.responseType = 'blob';
-//   xhr.send();
-// }
-
-// toDataURL('https://www.gravatar.com/avatar/d50c83cc0c6523b4d3f6085295c953e0', function(dataUrl) {
-//   console.log('RESULT:', dataUrl);
-// });
-
-
 
 
 
@@ -270,7 +204,6 @@ function trackAction() {
     case 'shuffle':
       if (defaultSongs == null) {
         defaultSongs = JSON.stringify(songs);
-        console.log(defaultSongs);
         val.style.color = "var(--primary-color)";
         songs = shuffle(songs);
       } else {
@@ -359,11 +292,11 @@ function pause() {
 
 // shortcuts
 document.addEventListener('keydown', function(e) {
-  console.log(document.activeElement.tagName);
-  if (audio !== undefined && document.activeElement.tagName !== 'INPUT') {
+  if (audio !== undefined && document.activeElement.tagName !== 'INPUT' && pressed == false) {
+    e.preventDefault();
+    pressed = true;
     if (e.code == "Space" || e.key == 'k') {
       pause();
-      e.preventDefault();
     } else if (e.key == 'Escape') {
       document.getElementById("trackPlayNav").classList.add("hidden");
       clearInterval(interval);
@@ -393,6 +326,10 @@ document.addEventListener('keydown', function(e) {
   } else if (e.key == 'Escape') {
     document.activeElement.blur();
   }
+});
+var pressed = false;
+document.addEventListener('keyup', function(e) {
+  pressed = false;
 });
 
 
@@ -437,6 +374,3 @@ function checkRepeat(back) {
     }
   }
 }
-
-
-// TODO: TRACK ON ENDED SKIPPING....??????????

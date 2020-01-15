@@ -1,4 +1,0 @@
-- Add the five "old" songs.
-
-- Custom Audio Player: https://webdesign.tutsplus.com/tutorials/create-a-customized-html5-audio-player--webdesign-7081
-- Delete? - Archive.zip

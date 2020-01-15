@@ -8,7 +8,7 @@
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <!-- Fonts and icons -->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"> -->
     <!-- Material Kit CSS -->
     <link href="assets/css/material-kit.css?v=2.0.5" rel="stylesheet" />
     <!-- favicons - source: https://favicon.io/emoji-favicons/ (Objects) -->
@@ -77,7 +77,7 @@
             <p><a href="https://www.google.com/maps/place/Erlevegen%2017,%20Bryne" target="_blank" style="color:#999999;">Erlevegen 17, 4347 LYE</a><br>
             <a href="tel:+4741640448" style="color:#999999;">416 40 448</a> • <a href="mailto: kristoffervassbo@gmail.com" style="color:#999999;">kristoffervassbo@gmail.com</a><br>
             <!-- fødd: 05. november 2002</p> -->
-            fødd: 05. november 2002 • <script> document.write(Math.abs(new Date(Date.now() - new Date("November 05, 2002 21:51:00").getTime()).getUTCFullYear() - 1970)); </script> år</p>
+            fødd: 05. november 2002 • <span id="age">  </span> år</p>
           </div>
           <div class="row">
             <div class="col-md-6 ml-auto mr-auto">
@@ -236,25 +236,27 @@
           </ul>
         </nav>
         <div class="copyright float-right">
-            &copy;
-            <script>
-                document.write(new Date().getFullYear())
-            </script>, laget med <i class="material-icons">favorite</i> av
+            &copy; <span id="year">2020</span>, laget med <i class="material-icons">favorite</i> av
             <a href="https://www.creative-tim.com/" target="blank">Creative Tim</a> for et bedre internett.
         </div>
       </div>
     </footer>
+    <script>
+      document.getElementById("year").innerHTML = new Date().getFullYear();
+      document.getElementById("age").innerHTML = Math.abs(new Date(Date.now() - new Date("November 05, 2002 21:51:00").getTime()).getUTCFullYear() - 1970);
+    </script>
+
     <!--   Core JS Files   -->
     <script src="assets/js/core/jquery.min.js" type="text/javascript"></script>
     <script src="assets/js/core/popper.min.js" type="text/javascript"></script>
     <script src="assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
-    <script src="assets/js/plugins/moment.min.js"></script>
+    <!-- <script src="assets/js/plugins/moment.min.js"></script> -->
     <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
-    <script src="assets/js/plugins/bootstrap-datetimepicker.js" type="text/javascript"></script>
+    <!-- <script src="assets/js/plugins/bootstrap-datetimepicker.js" type="text/javascript"></script> -->
     <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-    <script src="assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
+    <!-- <script src="assets/js/plugins/nouislider.min.js" type="text/javascript"></script> -->
     <!--  Google Maps Plugin    -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script> -->
     <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
     <script src="assets/js/material-kit.js?v=2.0.5" type="text/javascript"></script>
   </body>
