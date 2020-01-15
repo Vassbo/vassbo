@@ -74,7 +74,7 @@ var songs = [
         url = "prosjekt.html#" + name.toLowerCase() + "+f";
       }
       var newDiv = '<h5 class="description"><a href="' + url + '">' + name + '</a></h5>' +
-      '<div class="progress progress-line-primary"><div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="' + completeness + '" aria-valuemin="0" aria-valuemax="100" style="width: ' + completeness + '%;"><span class="sr-only" style="display:none;">' + completeness + '% Complete</span></div></div>';
+      '<div class="progress progress-line-primary"><div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="' + completeness + '" aria-valuemin="0" aria-valuemax="100" style="width: ' + completeness + '%;"><span class="sr-only">' + completeness + '% Complete</span></div></div>';
       if (completeness < lessThan && !islessThan) {
         islessThan = true;
         newDiv = '<div class="text-center"><button id="showLessThanBtn" class="btn btn-primary btn-link" onclick="showLessThan();">Vis flere prosjekter<!--<br>--> <em>(under ' + lessThan + '% fullført)</em><div class="ripple-container"></div></button></div>' +
@@ -98,7 +98,7 @@ var songs = [
         rowClassList = "col-sm-2 cover-column";
       }
       var songs_container = document.getElementById("row" + row);
-      var src = "./assets/music/covers/" + song + ".jpg";
+      var src = "./assets/covers/" + song + ".jpg";
       songs_container.innerHTML += '<div class="' + rowClassList + '"><img src="' + src + '" alt="Cover for ' + song + '" class="rounded img-fluid hoverZoomLink cover" onclick="playTrack(' + j + ')"><h4>' + song + '</h4></div>';
       if (column == 3) {
         column = 0;
@@ -132,8 +132,14 @@ var songs = [
     }
     document.title = originalName;
   }
-
   // TODO: REMOVE IFRAME LOG??
+
+  // fullscreen
+  if (document.getElementById("fsBtn") !== null) {
+    document.getElementById("fsBtn").addEventListener('click', function() {
+      document.getElementById("iframe").requestFullscreen();
+    });
+  }
 })();
 
 
@@ -142,12 +148,4 @@ var songs = [
 function showLessThan() {
   document.getElementById("hiddenList").classList.toggle("hidden");
   document.getElementById("showLessThanBtn").classList.toggle("btn-link");
-}
-
-
-// fullscreen
-if (document.getElementById("fsBtn") !== null) {
-  document.getElementById("fsBtn").addEventListener('click', function() {
-    document.getElementById("iframe").requestFullscreen();
-  });
 }
