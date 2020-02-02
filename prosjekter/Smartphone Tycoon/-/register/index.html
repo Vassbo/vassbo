@@ -1,0 +1,52 @@
+<?php include('../functions.php') ?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Smartphone Tycoon | Register</title>
+	<link rel="stylesheet" type="text/css" href="../css/login-style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+	<form class="form" method="post" action="index.php">
+
+		<h2>Register</h2>
+		<!-- <label><i>You can update everything later in the settings</i></label> -->
+		<br>
+		<?php echo display_error(); ?>
+		<div class="input-group">
+			<label>Company Name*</label>
+			<input class="input" type="text" name="company_name" maxlength="30"> <!-- value="<?php echo $company_name; ?>" -->
+		</div>
+		<div class="input-group">
+			<label>Email</label> <!--  (<i>Optional</i>) -->
+			<input class="input" type="email" name="email"> <!-- value="<?php echo $email; ?>" -->
+		</div>
+		<div class="input-group">
+			<label>Password*</label>
+			<input class="input" type="password" name="password_1" minlength="5">
+		</div>
+		<div class="input-group">
+			<label>Repeat Password*</label>
+			<input class="input" type="password" name="password_2" minlength="5">
+		</div>
+		<div class="input-group">
+			<button type="submit" class="btn pointer" name="register_btn">Register</button>
+		</div>
+		<?php echo register_error(); ?>
+		<p>
+			Already registered? <a href="../login">Login here</a>
+		</p>
+		<br>
+		<label>*Required<br>
+		<i>You can update everything later in the settings</i></label>
+		<br>
+		<a href="../trust">How can I trust this site?</a>
+	</form>
+
+  <footer>
+    <!--<p id="version">v. 2.0</p>-->
+    <p id="copy">&copy 2019 Kristoffer Vassbø</p>
+  </footer>
+</body>
+</html>

@@ -1,8 +1,9 @@
 - upload music/html repository on github
 - Custom logo?
-- music loading indicator
-- Music player...: https://codepen.io/nicholaspetersen/pen/yyVYMY
-- SoloLearn
 
+- music loading indicator
+- Visualizer: JS Create a visualizer - Google
+
+- SoloLearn
 
 - google material font

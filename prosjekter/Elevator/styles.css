@@ -9,11 +9,37 @@ body {
   /* font-family: sans-serif; */
 }
 
+
+/* TODO: credit: https://codepen.io/simurai/pen/DwJdq */
+
+
+/* #elevatorDiv {
+  position: absolute;
+  left: 400px;
+  transform: translateX(-50%);
+  height: 100%;
+} */
+/* #elevator {
+  position: relative;
+  top: 500px;
+  left: 400px;
+  transform: translateX(-50%);
+  display: inline-block;
+} */
+
+#elevatorDiv {
+  position: relative;
+  /* top: 500px; */
+  left: 400px;
+  /* height: 100%; */
+  display: inline-block;
+  transition: top 10s; /* TODO: 12s */
+}
+
 #elevator {
   position: absolute;
-  top: 50%;
-  left: 400px;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
+  /* margin-top: 100px; */
 }
 
 #elevator-inside {
@@ -36,11 +62,24 @@ button:active {
   box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
 } */
 
+
+
+.elevator-door {
+  /* background: gray; */
+  background-image: -webkit-repeating-linear-gradient(left, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0)   6%, hsla(0,0%,100%, .1) 7.5%),
+    -webkit-repeating-linear-gradient(left, hsla(0,0%,  0%,0) 0%, hsla(0,0%,  0%,0)   4%, hsla(0,0%,  0%,.03) 4.5%),
+    -webkit-repeating-linear-gradient(left, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0) 1.2%, hsla(0,0%,100%,.15) 2.2%),
+
+    linear-gradient(180deg, hsl(0,0%,78%)  0%,
+    hsl(0,0%,80%) 47%,
+    hsl(0,0%,68%) 53%,
+    hsl(0,0%,60%)100%)
+}
+
 .elevator-door1 {
   position: absolute;
   width: 99px;
   height: 300px;
-  background: gray;
   border-right: 1px solid #8a8a8a;
 
   z-index: 10;
@@ -59,7 +98,6 @@ button:active {
   margin-left: 100px;
   width: 99px;
   height: 300px;
-  background: gray;
   border-left: 1px solid #8a8a8a;
 
   z-index: 10;
@@ -367,13 +405,20 @@ a { text-decoration: none; display: block; }
 
 /* outside */
 
-#outside_buttons1 {
-  position: absolute;
+#floorsDiv {
+  height: 100vh;
+  width: 600px;
+  overflow: auto;
+}
+
+.outside_buttons {
+  /* position: absolute;
   left: 100px;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); */
+  margin: 200px 0;
 }
-#outside_buttons1 button {
+.outside_buttons button {
   display: grid;
 }
 

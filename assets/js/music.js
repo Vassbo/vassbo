@@ -5,9 +5,9 @@
 
 var audio;
 var repeat = true, interval;
-function playTrack(index) {
-  var song = songs[index];
-  if (song.includes("old:")) song = song.slice(4, song.length);
+function playTrack(index, card) {
+  var song = Object.keys(songs)[index];
+  if (card === true) song = index;
   if (fullscreen) {
     // TODO: Animate!
     document.getElementById("BIGcover").src = "./assets/music/covers/" + song + ".jpg";
@@ -74,14 +74,12 @@ function ended() {
 
 
 function mediaSession(song) {
-  var album = "Dreams";
-  if (song == 'Live' || song == 'hope' || song == 'happy' || song == 'sad' || song == 'emotional') album = 'Old Songs';
-  if (song == 'musicaly' || song == 'salmonia') album = 'GarageBand';
+  // if (song == 'musicaly' || song == 'salmonia') album = 'GarageBand';
   if ('mediaSession' in navigator) {
     navigator.mediaSession.metadata = new MediaMetadata({
       title: song,
       artist: "Vizzber",
-      album: album,
+      album: getAlbum(song),
       // https://kristoffer.netlify.com/assets/music/covers/
       artwork: [{src: '/assets/music/covers/' + song + '.jpg', sizes: '192x192', type: 'image/jpg'}]
     });
@@ -92,6 +90,14 @@ function mediaSession(song) {
     navigator.mediaSession.setActionHandler('previoustrack', function() { if (audio.currentTime < 3) { checkRepeat('back'); } else { audio.currentTime = 0; } });
     navigator.mediaSession.setActionHandler('nexttrack', checkRepeat);
   }
+}
+
+function getAlbum(song) {
+  var album = '';
+  for (var i = 0; i < Object.keys(songs).length; i++) {
+    if (Object.keys(songs)[i] == song) album = songs[Object.keys(songs)[i]].album;
+  }
+  return album;
 }
 
 
@@ -335,20 +341,34 @@ document.addEventListener('keyup', function(e) {
 
 
 function shuffle(a) {
-  var j, x, i;
-  for (i = a.length - 1; i > 0; i--) {
-      j = Math.floor(Math.random() * (i + 1));
-      x = a[i];
-      a[i] = a[j];
-      a[j] = x;
+  // var j, x, i;
+  // for (i = a.length - 1; i > 0; i--) {
+  //     j = Math.floor(Math.random() * (i + 1));
+  //     x = a[i];
+  //     a[i] = a[j];
+  //     a[j] = x;
+  // }
+
+  var oldA = a;
+  var newA = {};
+  a = Object.keys(a).map((a) => ({sort: Math.random(), value: a})).sort((a, b) => a.sort - b.sort).map((a) => a.value);
+
+  for (var i = 0; i < a.length; i++) {
+    for (var j = 0; j < Object.keys(oldA).length; j++) {
+      if (Object.keys(oldA)[j] == a[i]) newA[a[i]] = oldA[Object.keys(oldA)[j]];
+    }
   }
-  return a;
+
+  return newA;
 }
 
 function getSongIndex() {
   var song = document.getElementById("trackName").innerHTML;
-  for (var i = 0; i < songs.length; i++) {
-    if (songs[i] == song || songs[i] == "old:" + song) {
+  // var array = songs;
+  // if (defaultPos === true && defaultSongs !== null) array = JSON.parse(defaultSongs);
+  // console.log(array);
+  for (var i = 0; i < Object.keys(songs).length; i++) {
+    if (Object.keys(songs)[i] == song) {
       break;
     }
   }
@@ -363,11 +383,11 @@ function checkRepeat(back) {
     index = getSongIndex() - 1;
   }
   if (repeat === true) {
-    if (index < 0) index = songs.length - 1;
-    else if (index == songs.length) index = 0;
+    if (index < 0) index = Object.keys(songs).length - 1;
+    else if (index == Object.keys(songs).length) index = 0;
     playTrack(index);
   } else {
-    if (index < songs.length && index >= 0) {
+    if (index < Object.keys(songs).length && index >= 0) {
       playTrack(index);
     } else {
       document.getElementById("play_pause").innerHTML = 'play_arrow';
