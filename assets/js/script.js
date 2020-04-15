@@ -63,6 +63,12 @@ var files = {
   'YouTuber Simulator': { 'completeness': '20', 'folder': true,
     'description': ''
   },
+  // 'BlackOceans': { 'completeness': '20', 'folder': true,
+  //   'description': ''
+  // },
+  'elektro.netlify.com': { 'completeness': '8', 'folder': false, // Elektro
+    'description': ''
+  },
   // 'Gåte': { 'completeness': '10',/   'folder': true,
   //   'description': ''
   // },
@@ -75,6 +81,7 @@ var islessThan = false;
 
 
 var songs = {
+  'Fireflies': { 'album': 'Dreams', 'uploaded': '22/02/20', 'duration': '2:57' },
   'Breeze': { 'album': 'Dreams', 'uploaded': '26/12/19', 'duration': '3:25' },
   'Valley': { 'album': 'Dreams', 'uploaded': '16/10/19', 'duration': '3:03' },
   'United': { 'album': 'Dreams', 'uploaded': '18/08/19', 'duration': '3:52' },
@@ -126,7 +133,12 @@ var songs = {
         // name = name.slice(2, name.length);
         url = "prosjekt.html#" + name.toLowerCase() + "+f";
       }
-      var newDiv = '<h5 class="description"><a href="' + url + '">' + name + '</a></h5>' +
+      var target = '_self';
+      if (name.includes('.')) {
+        url = 'https://' + name;
+        target = '_blank';
+      }
+      var newDiv = '<h5 class="description"><a href="' + url + '" target="' + target + '">' + name + '</a></h5>' +
       '<div class="progress progress-line-primary"><div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="' + completeness + '" aria-valuemin="0" aria-valuemax="100" style="width: ' + completeness + '%;"><span class="sr-only">' + completeness + '% Complete</span></div></div>';
       if (completeness < lessThan && !islessThan) {
         islessThan = true;
@@ -152,7 +164,7 @@ var songs = {
         rowClassList = "col-sm-2 cover-column";
       }
       var songs_container = document.getElementById("row" + row);
-      var src = "./assets/covers/" + song + ".jpg";
+      var src = "./assets/covers/" + song + ".jpg"; // -small
       songs_container.innerHTML += '<div class="' + rowClassList + '"><img src="' + src + '" alt="Cover for ' + newName + '" class="rounded img-fluid hoverZoomLink cover" onclick="playTrack(\'' + song + '\', true);">' +
       // '<h4 style="display:inline-block">' + newName + '</h4><span style="float:right;font-size:12px;margin:10px 0;">' + uploaded + '</span></div>';
       // '<h4 style="display:inline-block">' + newName + '</h4><span style="float:right;font-size:12px;margin: -28px 4px 10px 0;font-weight: bold;position: relative;color: white;background: rgba(0, 0, 0, 0.22);border-radius: 4px;padding: 0 6px;">' + uploaded + '</span></div>';

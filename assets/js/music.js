@@ -10,31 +10,35 @@ function playTrack(index, card) {
   if (card === true) song = index;
   if (fullscreen) {
     // TODO: Animate!
-    document.getElementById("BIGcover").src = "./assets/music/covers/" + song + ".jpg";
+    document.getElementById("BIGcover").src = "./assets/covers/" + song + ".jpg";
   }
   document.getElementById("trackPlayNav").classList.remove("hidden");
-  document.getElementById("trackCover").src = './assets/music/covers/' + song + '.jpg';
+  document.getElementById("trackCover").src = './assets/covers/' + song + '.jpg'; // -small
   document.getElementById("trackName").innerText = song;
   document.getElementById("play_pause").innerHTML = 'pause';
   updateTrackSlider("100%", "4px");
 
-  // check if it is wav or mp3
-  var src = './assets/music/' + song + '.wav';
-  var testAudio = new Audio(src);
-  var ok = false;
-  testAudio.addEventListener('canplaythrough', function() { ok = true; }, {once: true});
-  testAudio.onerror = function() {
-    src = './assets/music/' + song + '.mp3';
-    ok = true;
-  };
+  loader('start');
 
-  var loadtrack = setInterval(function() {
-    if (ok) {
-      clearInterval(loadtrack);
-      ready(src, song);
-      // audio.addEventListener('canplaythrough', ready, {once: true});
-    }
-  }, 20);
+  // check if it is wav or mp3
+  var src = './assets/music/' + song + '.mp3';
+  // var testAudio = new Audio(src);
+  // var ok = false;
+  // testAudio.addEventListener('canplaythrough', function() { ok = true; }, {once: true});
+  // testAudio.onerror = function() {
+  //   src = './assets/music/' + song + '.wav';
+  //   ok = true;
+  // };
+
+  // var loadtrack = setInterval(function() {
+  //   if (ok) {
+  //     clearInterval(loadtrack);
+  //     ready(src, song);
+  //     // audio.addEventListener('canplaythrough', ready, {once: true});
+  //   }
+  // }, 20);
+
+  ready(src, song);
 
   var interval = setInterval(function () {
     if (audio !== undefined) {
@@ -59,6 +63,7 @@ function ready(src, song) {
     audio.id = "audio";
     audio.removeEventListener('ended', ended);
     audio.addEventListener('ended', ended);
+    audio.addEventListener('canplaythrough', loader);
   } else {
     audio.src = src;
   }
@@ -71,6 +76,14 @@ function ended() {
   else checkRepeat();
 }
 
+function loader(action) {
+  if (action == 'start' && document.getElementById('loader') == undefined) {
+    document.getElementById('trackName').innerHTML += '<div id="loader" class="spinner-border" role="status" style="margin-left:10px;"><span class="sr-only">Loading...</span></div>';
+  } else if (document.getElementById('loader') !== undefined) {
+    document.getElementById('loader').remove();
+  }
+}
+
 
 
 function mediaSession(song) {
@@ -80,8 +93,8 @@ function mediaSession(song) {
       title: song,
       artist: "Vizzber",
       album: getAlbum(song),
-      // https://kristoffer.netlify.com/assets/music/covers/
-      artwork: [{src: '/assets/music/covers/' + song + '.jpg', sizes: '192x192', type: 'image/jpg'}]
+      // https://kristoffer.netlify.com/assets/covers/
+      artwork: [{src: '/assets/covers/' + song + '.jpg', sizes: '192x192', type: 'image/jpg'}]
     });
     navigator.mediaSession.setActionHandler('play', pause);
     navigator.mediaSession.setActionHandler('pause', pause);
@@ -126,6 +139,7 @@ document.addEventListener('mousemove', function(e) { if (mousedown) moveSlider(e
 
 var currentTime = 0;
 function moveSlider(e) {
+  loader('start');
   var slider = document.getElementById("trackSlider");
   var sliderLeft = slider.offsetLeft;
   var sliderWidth = slider.offsetWidth;
@@ -268,7 +282,9 @@ function toggleFullscreen(exit) {
   } else {
     fullscreen = true;
     document.body.style.overflow = "hidden";
-    document.getElementById("BIGcover").src = "./assets/music/covers/" + document.getElementById("trackName").innerHTML + ".jpg";
+    var trackName = document.getElementById("trackName").innerHTML;
+    if (trackName.includes('<div')) trackName = trackName.slice(0, trackName.indexOf('<div'));
+    document.getElementById("BIGcover").src = "./assets/covers/" + trackName + ".jpg";
     document.getElementById("trackPlayNav").style.setProperty('background-color', 'rgba(255, 255, 255, 0.4)', 'important');
     document.getElementById("trackPlayNav").style.backdropFilter = 'blur(6px)';
     document.getElementById("trackPlayNav").style.color = "white";
