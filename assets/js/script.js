@@ -124,7 +124,7 @@ tempArray.forEach(function(item) {
 
   // prosjekt.html
   var href = window.location.href, hash = window.location.hash;
-  if (href.includes("prosjekt") && href.includes("#")) {
+  if (href.includes("prosjekt") && href.includes("#") && !href.includes("#prosjekter")) {
     var type = hash.slice(1, hash.length);
     var ending = ".html";
     if (hash.includes("+f")) {
