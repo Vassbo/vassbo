@@ -51,7 +51,7 @@
         </div>
       </div>
     </nav>
-    <div class="page-header header-filter" data-parallax="true" style="background-image: url('assets/img/city-profile.jpg');"></div>
+    <div class="page-header header-filter" data-parallax="true" style="background-image: url('assets/img/snow.jpg');"></div> <!-- city-profile -->
     <div class="main main-raised">
       <div class="profile-content">
         <div class="container">
@@ -66,8 +66,10 @@
                   <h6>Elev på Tryggheim</h6>
                   <!-- <h6></h6> -->
                   <a href="https://www.facebook.com/kristoffervassbo" target="_blank" class="btn btn-just-icon btn-link btn-dribbble"><i class="fa fa-facebook"></i></a>
-                  <a href="https://no.pinterest.com/kristoffervassbo/" target="_blank" class="btn btn-just-icon btn-link btn-twitter"><i class="fa fa-pinterest"></i></a>
-                  <a href="https://soundcloud.com/vizzber" target="_blank" class="btn btn-just-icon btn-link btn-pinterest"><i class="fa fa-soundcloud"></i></a>
+                  <a href="https://soundcloud.com/vizzber" target="_blank" class="btn btn-just-icon btn-link btn-soundcloud"><i class="fa fa-soundcloud"></i></a>
+                  <a href="https://github.com/vassbo" target="_blank" class="btn btn-just-icon btn-link btn-github"><i class="fa fa-github"></i></a>
+                  <a href="https://no.pinterest.com/kristoffervassbo" target="_blank" class="btn btn-just-icon btn-link btn-pinterest"><i class="fa fa-pinterest"></i></a>
+                  <a href="https://twitter.com/vizzber" target="_blank" class="btn btn-just-icon btn-link btn-twitter"><i class="fa fa-twitter"></i></a>
                 </div>
               </div>
             </div>
@@ -100,8 +102,8 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#references" role="tab" data-toggle="tab">
-                      <i class="material-icons">people_alt</i> Refranasr
+                    <a class="nav-link" href="#knowledge" role="tab" data-toggle="tab">
+                      <i class="material-icons">menu_book</i> Kunnskap
                     </a>
                   </li>
                 </ul>
@@ -140,6 +142,11 @@
 
               <table class="cv">
                 <!-- <tr><th><p><br><h6>Erfaring:</h6></p></th></tr> -->
+                <tr><th><p class="cvp">Jan. 2020</p></th>
+                <th><p class="cvp">Praksisperiode<span style="font-weight:400;">, El-team</span></p></th></tr>
+                <tr><td></td>
+                <td><p>Tre veker i praksis hos El-team</p></td></tr>
+
                 <tr><th><p class="cvp">Okt. 2019</p></th>
                 <th><p class="cvp">Praksisperiode<span style="font-weight:400;">, Time Elektro</span></p></th></tr>
                 <tr><td></td>
@@ -209,14 +216,26 @@
 
             </div>
 
-            <div style="margin-left:50%;transform:translateX(-50%);width:50vw;" class="tab-pane gallery" id="references">
+            <div style="margin-left:50%;transform:translateX(-50%);width:50vw;" class="tab-pane gallery" id="knowledge">
 
               <!-- <tr><th><p><br><h6>Referansar:</h6></p></th></tr> -->
-              <table class="cv">
-                <tr><th><p class="cvp">Ragnhild Hanssen</p></th>
-                <td><p class="cvp">Kyrkjelydspedagog, Time og Undheim sokn • tlf: 99 02 28 72</p></td></tr>
-                <tr><th><p class="cvp">Anna Bergitte Skårland</p></th>
-                <td><p class="cvp">Dagleg leiar, Time sokn • tlf: 99 02 62 76</p></td></tr>
+              <table class="cv" style="width:80%" id="knowledgeTable">
+                <tr><th style="width:30%;text-transform:uppercase;"><p class="cvp">HTML</p></th>
+                <td style="padding-top:20px;">
+                  <div class="progress progress-line-primary">
+                    <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 30%;">
+                      <span class="sr-only">60% Complete</span>
+                    </div>
+                  </div>
+                </td></tr>
+                <tr><th style="width:30%;"><p class="cvp">CSS</p></th>
+                <td style="padding-top:20px;text-transform:uppercase;">
+                  <div class="progress progress-line-primary">
+                    <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 30%;">
+                      <span class="sr-only">60% Complete</span>
+                    </div>
+                  </div>
+                </td></tr>
               </table>
             </div>
 
@@ -237,13 +256,44 @@
         </nav>
         <div class="copyright float-right">
             &copy; <span id="year">2020</span>, laget med <i class="material-icons">favorite</i> av
-            <a href="https://www.creative-tim.com/" target="blank">Creative Tim</a> for et bedre internett.
+            <a href="https://www.creative-tim.com/" target="blank">Creative Tim</a> og <a href="#">Kristoffer Vassbø</a>.
         </div>
       </div>
     </footer>
     <script>
       document.getElementById("year").innerHTML = new Date().getFullYear();
       document.getElementById("age").innerHTML = Math.abs(new Date(Date.now() - new Date("November 05, 2002 21:51:00").getTime()).getUTCFullYear() - 1970);
+    </script>
+
+    <script>
+      // kunnskap
+      var knowledge = {
+        html: '98',
+        css: '88',
+        javascript: '78',
+        mysql: '75',
+        php: '65',
+        vuejs: '40',
+        jquery: '35',
+        java: '20',
+        nodejs: '10',
+        python: '1'
+      }
+
+      var html = '';
+      for (var i = 0; i < Object.keys(knowledge).length; i++) {
+        var key = Object.keys(knowledge)[i];
+        var percentage = knowledge[key];
+        html += '<tr><th style="width:30%;text-transform:uppercase;"><p class="cvp">' + key + ' (' + percentage + '%)</p></th>' +
+        '<td style="padding-top:20px;">' +
+          '<div class="progress progress-line-primary">' +
+            '<div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="' + percentage + '" aria-valuemin="0" aria-valuemax="100" style="width: ' + percentage + '%;background:linear-gradient(to right, red 60%, orange 70%, #16b649 80%) left/var(--p,100%) fixed, lightgray;">' +
+              '<span class="sr-only">' + percentage + '% Complete</span>' +
+            '</div>' +
+          '</div>' +
+        '</td></tr>';
+      }
+      document.getElementById('knowledgeTable').innerHTML = html;
     </script>
 
     <!--   Core JS Files   -->

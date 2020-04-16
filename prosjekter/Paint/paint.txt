@@ -6,3 +6,5 @@ undo/redo
 bigger screen
 more tools
 better layout...
+
+theme

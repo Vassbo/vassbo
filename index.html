@@ -7,10 +7,12 @@
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <!-- <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> -->
-    <meta name="description" content="Min egen nettside. Kristoffer Vassbøs nettside. Velkommen til min hjemmeside.">
+    <meta name="description" content="Min egen hjemmeside. Kristoffer Vassbøs hjemmeside. Velkommen til min hjemmeside.">
+    <meta name="keywords" content="Hjemmeside, Kristoffer Vassbø, nettside, musikk, prosjekter, HTML, CV">
+    <meta name="author" content="Kristoffer Vassbø">
     <!-- Fonts and icons -->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" defer/>
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <!-- Material Kit CSS -->
     <link href="assets/css/material-kit.css?v=2.0.5" rel="stylesheet" />
     <!-- favicons - source: https://favicon.io/emoji-favicons/ (Objects) -->
@@ -61,7 +63,7 @@
     </nav>
 
 
-    <div class="page-header header-filter purple-filter" data-parallax="true" style="background-image: url('assets/img/bg2.jpg')">
+    <div class="page-header header-filter purple-filter" data-parallax="true" style="background-image: url('assets/img/thunderstorm.jpg')"> <!-- bg2 -->
       <div class="container">
         <div class="row">
           <div class="col-md-8 ml-auto mr-auto">
@@ -81,7 +83,7 @@
     <div class="container" id="musikk">
       <div class="section"> <!-- text-left -->
         <div id="images">
-          <h2 class="text-center">Musikk</h2> <!-- title -->
+          <h2 class="text-center">Musikk <a title="Bedre kvalitet og gratis nedlastning på SoundCloud" href="https://soundcloud.com/vizzber" target="_blank" class="btn btn-just-icon btn-link btn-soundcloud"><i class="fa fa-soundcloud"></i></a></h2>
           <br>
           <!-- added by js -->
         </div>
@@ -92,10 +94,24 @@
     <div class="container" id="prosjekter">
       <div class="section">
         <div class="row">
-          <div id="project_list" class="col-md-8 ml-auto mr-auto">
+          <div class="col-md-8 ml-auto mr-auto">
             <h2 class="text-center">Prosjekter</h2> <!-- title -->
+
+            <div class="dropdown" style="position:absolute;right:14px;top:20px;">
+              <!-- btn-secondary -->
+              <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Sorter etter
+              </button>
+              <div class="dropdown-menu hiding" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item active" href="javascript:void(0)">Min rekkefølge</a> <!-- mine favoritter -->
+                <a class="dropdown-item" href="javascript:void(0)">Prosent fullført</a>
+                <!-- <a class="dropdown-item" href="#"></a> -->
+              </div>
+            </div>
+
             <!-- <br> -->
             <!-- added by js -->
+            <div id="project_list"></div>
           </div>
         </div>
       </div>
@@ -231,7 +247,7 @@
       </nav>
       <div class="copyright float-right">
           &copy; <span id="year">2020</span>, laget med <i class="material-icons">favorite</i> av
-          <a href="https://www.creative-tim.com/" target="blank">Creative Tim</a> for et bedre internett.
+          <a href="https://www.creative-tim.com/" target="blank">Creative Tim</a> og <a href="#">Kristoffer Vassbø</a>.
       </div>
     </div>
   </footer>
