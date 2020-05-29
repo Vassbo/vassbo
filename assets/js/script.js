@@ -33,6 +33,7 @@ var files = { // en del av disse er ikke oppdatert
 
 
 var songs = {
+  'Waves': {album: 'Dreams', uploaded: '22/05/20', duration: '3:53'},
   'Horizon': {album: 'Dreams', uploaded: '27/04/20', duration: '2:42'},
   'Fireflies': {album: 'Dreams', uploaded: '22/02/20', duration: '2:57'},
   'Breeze': {album: 'Dreams', uploaded: '26/12/19', duration: '3:25'},
