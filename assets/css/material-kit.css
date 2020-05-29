@@ -6248,6 +6248,16 @@ label {
     margin-left: 10px;
     margin-right: 10px;
   }
+  /* my */
+  .profile-content .tab-space .tab-pane {
+    width: 80vw !important;
+    margin-left: 0 !important;
+    transform: none !important;
+  }
+
+  .profile-content table.cv {
+    width: 90% !important;
+  }
 }
 
 @media (max-width: 767px) {
@@ -9145,6 +9155,8 @@ footer .pull-center {
     position: absolute;
     right: 16px;
     margin-top: 8px;
+    /* my */
+    right: 0;
   }
   .navbar-collapse .navbar-nav {
     position: relative;
@@ -9221,6 +9233,40 @@ footer .pull-center {
   #navbar .navbar-collapse,
   #navigation .navbar-collapse {
     display: none !important;
+  }
+
+  /* my */
+  .navbar.music-bar {
+    padding-top: 2.8rem;
+  }
+  .navbar-translate {
+    width: 100% !important;
+    margin-bottom: 10px;
+  }
+  #trackSlider {
+    position: absolute;
+    bottom: 65px;
+    width: 75% !important;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .navbar .navbar-brand#trackTime, .navbar .navbar-brand#trackDuration {
+    position: absolute;
+    bottom: 55px;
+  }
+  .navbar .navbar-brand#trackDuration {
+    right: 0;
+    margin-right: 0;
+  }
+
+  .navbar .navbar-brand#trackName {
+    width: auto !important;
+  }
+
+  .navbar .navbar-nav {
+    flex-direction: row;
+    /* width: 80%; */ /* parent must be 100% */
+    /* center */ /* margin: auto... */
   }
 }
 
@@ -9557,6 +9603,43 @@ footer .pull-center {
 @media screen and (max-width: 400px) {
   .cd-vertical-nav {
     display: none !important;
+  }
+}
+@media screen and (max-width: 470px) {
+  /* my */
+  #images .row {
+    flex-direction: column;
+  }
+  #images .cover-row .col-sm-2 {
+    /* flex: 0 0 100%; */
+    max-width: 100%;
+  }
+  #images .cover-row .col-sm-2 h4 {
+    text-align: center;
+    width: 100%;
+  }
+
+  .dropdown {
+    right: 50% !important;
+    transform: translateX(50%);
+    top: -30px !important;
+  }
+}
+@media (min-width: 471px) and (max-width: 991px) {
+  /* my */
+  #images .row {
+    /* flex-direction: column; */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 18px;
+  }
+  #images .cover-row .col-sm-2 {
+    /* flex: 0 0 100%; */
+    max-width: 100%;
+  }
+  #images .cover-row .col-sm-2 h4 {
+    /* text-align: center;
+    width: 100%; */
   }
 }
 
