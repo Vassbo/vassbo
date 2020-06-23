@@ -1,30 +1,30 @@
 
 var files = { // en del av disse er ikke oppdatert
   'Logic Simulator': {completeness: '80', url: 'https://logics.netlify.com', description: ''},
-  'AddictClicker': {completeness: '80', folder: true, description: ''},
-  // 'Colors': {completeness: '100', description: 'Found on SoloLearn...'},
-  // 'BlackOceans': {completeness: '20', url: 'comming', description: ''},
   'Photor': {completeness: '90', folder: true, description: ''},
+  // 'BlackOceans': {completeness: '20', url: 'comming', description: ''},
+  // 'Colors': {completeness: '100', description: 'Found on SoloLearn...'},
+  'AddictClicker': {completeness: '80', folder: true, description: ''},
   'NotPad': {completeness: '90', folder: true, description: ''},
   'Smartphone Tycoon': {completeness: '50', folder: true, description: ''},
   'Gaming': {completeness: '20', url: 'https://gaming.kristoffer.heliohost.org', description: ''},
+  'Gåte': {completeness: '98', url: 'https://gaate.netlify.app/'},
   'Elevator': {completeness: '85', folder: true, description: ''},
-  'Elektro': {completeness: '8', url: 'https://elektro.netlify.com', description: ''},
   'GjettHvem': {completeness: '100', folder: true, description: ''},
-  'YouTuber Simulator': {completeness: '20', folder: true, description: ''},
-  'Problem&Løsning': {completeness: '100', folder: true, description: ''},
   'Paint': {completeness: '70', folder: true, description: ''},
   'Maze': {completeness: '50', folder: true, description: 'Babylon.js'},
-
+  
   'SEPERATOR': {completeness: '50', description: 'test'},
-  'UUID': {completeness: '95', folder: true, description: ''},
   'TimeIsMoney': {completeness: '100', description: 'Bruk: 10:00-13:00, 15:00-15:30<br>110kr i timen'},
+  'Problem&Løsning': {completeness: '100', folder: true, description: ''},
+  'UUID': {completeness: '95', folder: true, description: ''},
+  'YouTuber Simulator': {completeness: '20', folder: true, description: ''},
+  'Elektro': {completeness: '5', url: 'https://elektro.netlify.com', description: ''},
   'Fyrverkeri': {completeness: '100', folder: true, description: 'Trykk mellomrom<br>Skuleprosjekt...'},
-  'Login&Register': {completeness: '95', folder: true, description: ''},
+  // 'Login&Register': {completeness: '95', folder: true, description: ''},
   'Email': {completeness: '95', folder: true, description: ''},
-  'Jul': {completeness: '80', description: ''},
+  'Jul': {completeness: '75', description: ''},
   'Bursdag': {completeness: '80', description: ''},
-  // 'Gåte': {completeness: '10', folder: true, description: ''},
   // ikke mine:
   // 'Snake': {completeness: '70', description: ''},
   // 'Rain': {completeness: '40', folder: true, description: ''},
@@ -32,6 +32,7 @@ var files = { // en del av disse er ikke oppdatert
 };
 
 
+// 'Track Name': {album: 'Album', uploaded: 'DD/MM/YY', duration: 'M:SS', format?: 'mp3', artwork?: 'trackArtwork.jpg'}
 var songs = {
   'Summer Vibes': {album: 'Dreams', uploaded: '17/06/20', duration: '2:33'},
   'Waves': {album: 'Dreams', uploaded: '22/05/20', duration: '3:52'},
@@ -52,7 +53,7 @@ var songs = {
   'Twins': {album: 'Dreams', uploaded: '27/02/19', duration: '3:12'},
   'Space': {album: 'Dreams', uploaded: '03/02/19', duration: '2:42'},
   'Moving': {album: 'Dreams', uploaded: '12/01/19', duration: '3:28'},
-  'K-391 - Mystery (Vizzber Remix)': {album: 'Dreams', uploaded: '21/12/18', duration: '3:51'},
+  'K-391 - Mystery (Vizzber Remix)': {album: 'Remix', uploaded: '21/12/18', duration: '3:51'},
   'Move (Instrumental)': {album: 'Dreams', uploaded: '02/12/18', duration: '3:43'},
   'Move': {album: 'Dreams', uploaded: '01/12/18', duration: '3:43'},
   'Fall': {album: 'Dreams', uploaded: '26/11/18', duration: '2:12'},
@@ -65,14 +66,20 @@ var songs = {
   'Dreams': {album: 'Dreams', uploaded: '10/10/18', duration: '3:22'},
   'Atmosphere': {album: 'Dreams', uploaded: '09/10/18', duration: '3:03'},
 
-  'Live': {album: 'Old Songs', uploaded: '17/06/18', duration: '1:00'},
-  'Hope': {album: 'Old Songs', uploaded: '17/06/18', duration: '1:23'},
-  'Happy': {album: 'Old Songs', uploaded: '17/06/18', duration: '0:57'},
-  'Sad': {album: 'Old Songs', uploaded: '17/06/18', duration: '1:11'},
-  'Emotional': {album: 'Old Songs', uploaded: '16/06/18', duration: '2:15'}
+  'Live': {album: 'The Beginning', uploaded: '17/06/18', duration: '1:00'},
+  'Hope': {album: 'The Beginning', uploaded: '17/06/18', duration: '1:23'},
+  'Happy': {album: 'The Beginning', uploaded: '17/06/18', duration: '0:57'},
+  'Sad': {album: 'The Beginning', uploaded: '17/06/18', duration: '1:11'},
+  'Emotional': {album: 'The Beginning', uploaded: '16/06/18', duration: '2:15'},
 
-  // 'musicaly..': {album: 'GarageBand', uploaded: 'Never (13/09/17.....)', duration: 'X:XX'}
-  // 'salmonia..': {album: 'GarageBand', uploaded: 'Never', duration: 'X:XX'}
+  // (Pre 01/06/18 | 13/09/17.....)
+  // 'Silamonia': {album: 'GarageBand', uploaded: 'Never', duration: '3:48'},
+  // 'Saubrian': {album: 'GarageBand', uploaded: 'Never', duration: '3:39'},
+  // 'Musical': {album: 'GarageBand', uploaded: 'Never', duration: '3:34'},
+  // 'Modern': {album: 'GarageBand', uploaded: 'Never', duration: '2:37'},
+  // // 'Beautiful 2': {album: 'GarageBand', uploaded: 'Never', duration: '1:56'}, // Good Memories
+  // 'Min sang 2': {album: 'GarageBand', uploaded: 'Never', duration: '1:47'},
+  // 'Min sang 1': {album: 'GarageBand', uploaded: 'Never', duration: '0:35'},
 };
 
 
