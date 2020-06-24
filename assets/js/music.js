@@ -8,6 +8,7 @@ function playTrack(index, card) {
       // TODO: Animate!
       document.getElementById("BIGcover").src = "./assets/covers/" + song + ".jpg";
     }
+    if (song === 'Move') alert('Advarsel! Ustemte vokaler');
     document.getElementById("trackPlayNav").classList.remove("hidden");
     document.getElementById("trackCover").src = './assets/covers/' + song + '.jpg'; // -small
     document.getElementById("trackName").innerText = song;
