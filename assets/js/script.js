@@ -1,13 +1,14 @@
 
 var files = { // en del av disse er ikke oppdatert
   'Logic Simulator': {completeness: '80', url: 'https://logics.netlify.com', description: ''},
+  'Spill': {completeness: '15', url: 'https://spill.netlify.app', description: ''},
   'Photor': {completeness: '90', folder: true, description: ''},
   // 'BlackOceans': {completeness: '20', url: 'comming', description: ''},
   // 'Colors': {completeness: '100', description: 'Found on SoloLearn...'},
   'AddictClicker': {completeness: '80', folder: true, description: ''},
   'NotPad': {completeness: '90', folder: true, description: ''},
   // 'Smartphone Tycoon': {completeness: '50', folder: true, description: ''},
-  'PHP Nettside': {completeness: '20', url: 'https://gaming.kristoffer.heliohost.org', description: ''},
+  'PHP Nettside': {completeness: '80', url: 'https://gaming.kristoffer.heliohost.org', description: ''},
   'Gåte': {completeness: '98', url: 'https://gaate.netlify.app/'},
   'Elevator': {completeness: '85', folder: true, description: ''},
   'GjettHvem': {completeness: '100', folder: true, description: ''},
