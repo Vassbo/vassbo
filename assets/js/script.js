@@ -1,6 +1,7 @@
 
 var files = { // en del av disse er ikke oppdatert
   'Logic Simulator': {completeness: '80', url: 'https://logics.netlify.com', description: ''},
+  'Adventskalender': {completeness: '100', url: 'https://julekalender.netlify.app', description: ''},
   'Spill': {completeness: '15', url: 'https://spill.netlify.app', description: ''},
   'Photor': {completeness: '90', folder: true, description: ''},
   // 'BlackOceans': {completeness: '20', url: 'comming', description: ''},
@@ -35,6 +36,7 @@ var files = { // en del av disse er ikke oppdatert
 
 // 'Track Name': {album: 'Album', uploaded: 'DD/MM/YY', duration: 'M:SS', format?: 'mp3', artwork?: 'trackArtwork.jpg'}
 var songs = {
+  'Train': {album: 'Dreams', uploaded: '15/11/20', duration: '3:28'},
   'Summer Vibes': {album: 'Dreams', uploaded: '17/06/20', duration: '2:33'},
   'Waves': {album: 'Dreams', uploaded: '22/05/20', duration: '3:52'},
   'Horizon': {album: 'Dreams', uploaded: '27/04/20', duration: '2:42'},
