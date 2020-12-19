@@ -36,6 +36,7 @@ var files = { // en del av disse er ikke oppdatert
 
 // 'Track Name': {album: 'Album', uploaded: 'DD/MM/YY', duration: 'M:SS', format?: 'mp3', artwork?: 'trackArtwork.jpg'}
 var songs = {
+  'Aurora': {album: 'Dreams', uploaded: '19/12/20', duration: '3:18'},
   'Train': {album: 'Dreams', uploaded: '15/11/20', duration: '3:28'},
   'Summer Vibes': {album: 'Dreams', uploaded: '17/06/20', duration: '2:33'},
   'Waves': {album: 'Dreams', uploaded: '22/05/20', duration: '3:52'},
